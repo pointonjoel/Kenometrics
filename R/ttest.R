@@ -24,10 +24,11 @@ ttest <-
     if (is.null(df)) {
       print("Please input df")
       break
-    }
+    } #Joeltest
     estimate <- summary(model)$coefficients[var_name , 1]
     se <- summary(model)$coefficients[var_name , 2]
     tstat=(estimate-pop_mean)/se
     p_value <- 2*pt(-abs(tstat), df=nrow(df)-ncol(df))
     return(print(paste("The t-value for ", var_name, "is", signif(tstat, digits = 4), ". And the p-value is ", signif(p_value, digits = 4), ".")))
   }#dump("test", file = "test.R") #save function
+#41202c7510a048a20182a1804c34217e849a2a07
