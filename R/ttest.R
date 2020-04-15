@@ -24,7 +24,7 @@ ttest <-
     if (is.null(df)) {
       print("Please input df")
       break
-    } #Joeltest
+    } #Joeltest #my new edit
     estimate <- summary(model)$coefficients[var_name , 1]
     se <- summary(model)$coefficients[var_name , 2]
     tstat=(estimate-pop_mean)/se
