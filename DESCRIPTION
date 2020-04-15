@@ -17,3 +17,5 @@ Imports:
     car,
     modelr,
     tseries
+URL: https://github.com/pointonjoel/Kenometrics
+BugReports: https://github.com/pointonjoel/Kenometrics/issues
