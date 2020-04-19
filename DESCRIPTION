@@ -4,18 +4,21 @@ Title: Support Tools For Econometrics Classes
 Version: 0.1.0
 Author: Joel Pointon
 Maintainer: Joel Pointon <pointon.joel@gmail.com>
-Description: A set of functions which allow econometrics students to simply conduct important manipulations and tests.
+Description: A set of functions which allow econometrics students to simply conduct important manipulations and tests, with no-nonsense errors.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.0
-Imports: 
-    zoo,
-    wooldridge,
-    dynlm,
-    fredr,
-    car,
-    modelr,
-    tseries
 URL: https://github.com/pointonjoel/Kenometrics
 BugReports: https://github.com/pointonjoel/Kenometrics/issues
+VignetteBuilder: knitr
+Imports: 
+    wooldridge,
+    zoo,
+    car,
+    dynlm,
+    fredr,
+    readxl,
+    tseries
+Suggests:
+    knitr
