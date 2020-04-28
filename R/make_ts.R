@@ -12,7 +12,7 @@
 #' data <- make_ts("year", data)
 make_ts <-
   function (time_var, df){
-    if (is.null(time_Var)) {
+    if (is.null(time_var)) {
       print("Please give the time variable!")
       break
     }

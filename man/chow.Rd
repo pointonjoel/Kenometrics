@@ -4,7 +4,7 @@
 \alias{chow}
 \title{Chow Test}
 \usage{
-chow(possible_break, time_var = year, df, model, type)
+chow(possible_break, time_var = "year", df, model, type)
 }
 \arguments{
 \item{possible_break}{The year (point) in which the structural break is believed to have occured, e.g. 1969.}
@@ -24,6 +24,8 @@ The output from \code{\link{print}}, giving the result of the chow test.
 Conduct a chow test on a desired model for a structural break in either the intercept, slope, or both.
 }
 \examples{
-chow(1960, "Year", data, "No_Smoothing ~ Year", "both") #add functionality for lags! Maybe put the model in using a string and the append to it, rather than vector form?
-chow(1960, "Time", my_data, "lpop ~ price, L(linvpc,0:2) + p"), "intercept")
+file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+data <- read.delim(file)
+chow(1960, "Year", data, "linvpc ~ lpop", "both")
+chow(1960, "Time", my_data, "lpop ~ price, L(linvpc,0:2) + p", "intercept")
 }

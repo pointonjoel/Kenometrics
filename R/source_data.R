@@ -1,4 +1,4 @@
-#' @title Data Imports
+#' @title Importing Data
 #' @description Import data from a variety of sources
 #'
 #' @param name The filename of the dataset to be used, e.g. "hseinv" or "NASA", without the extension (i.e. "NASA", not "NASA.xlsx").  If using FRED, type the series id.
@@ -14,22 +14,23 @@
 #' @import wooldridge
 #' @import fredr
 #' @import readxl
+#' @importFrom utils read.table data
 #' @examples
 #' data <- get_data("hseinv", "wooldridge") #add functionality for using FRED!
 #' my_data <- get_data("NASA", "txt", "/", FALSE, wd="C:/Users/point/Documents/R/Kenometrics/R")
 get_data <-
-  function (name, type=wooldridge,delim="",header=TRUE,wd=wd, ...){
-    if (is.null(time_Var)) {
+  function (name, type="wooldridge",delim="",header=TRUE,wd=wd, ...){
+    if (is.null(name)) {
       print("Please give the name of the file.")
       break
     }
     if(type=="wooldridge"){
-      df <- data(name) #importing the data from the wooldridge package
+      df <- utils::data(name) #importing the data from the wooldridge package
     }
 
     if(type=="txt"){
       file_name <- paste(name,".txt", sep = "")
-      df <- read.table(file_name,header=header, sep=delim)
+      df <- utils::read.table(file_name,header=header, sep=delim)
     }
     if(type=="excel"){
       file_name <- paste(name,".xlsx", sep = "")

@@ -10,13 +10,14 @@
 #' @return The output from \code{\link{print}}, giving the T-Value and P-Value.
 #' @export
 #'
+#' @importFrom stats pt
 #' @examples
 #' ttest("lpop", data, linear_model, 0)
 #' \dontrun{
 #' ttest("educ", my_df, chow_model, 1)
 #' }
 ttest <-
-  function (var_name, df, model=my_model, pop_mean=0){
+  function (var_name, df, model="my_model", pop_mean=0){
     if (is.null(var_name)) {
       print("Please give variable name!")
       break
@@ -28,7 +29,7 @@ ttest <-
     estimate <- summary(model)$coefficients[var_name , 1]
     se <- summary(model)$coefficients[var_name , 2]
     tstat=(estimate-pop_mean)/se
-    p_value <- 2*pt(-abs(tstat), df=nrow(df)-ncol(df))
+    p_value <- 2*stats::pt(-abs(tstat), df=nrow(df)-ncol(df))
     return(print(paste("The t-value for ", var_name, " is ", signif(tstat, digits = 4), ", and the p-value is ", signif(p_value, digits = 4), ".", sep = "")))
   }#dump("test", file = "test.R") #save function
 #use_github(protocol = "https", auth_token = Sys.getenv("GITHUB_PAT"))

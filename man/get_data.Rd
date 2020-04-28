@@ -2,9 +2,9 @@
 % Please edit documentation in R/source_data.R
 \name{get_data}
 \alias{get_data}
-\title{Data Imports}
+\title{Importing Data}
 \usage{
-get_data(name, type = wooldridge, delim = "", header = TRUE, wd = wd, ...)
+get_data(name, type = "wooldridge", delim = "", header = TRUE, wd = wd, ...)
 }
 \arguments{
 \item{name}{The filename of the dataset to be used, e.g. "hseinv" or "NASA", without the extension (i.e. "NASA", not "NASA.xlsx").  If using FRED, type the series id.}

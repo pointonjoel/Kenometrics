@@ -4,7 +4,7 @@
 \alias{ttest}
 \title{T-Test}
 \usage{
-ttest(var_name, df, model = my_model, pop_mean = 0)
+ttest(var_name, df, model = "my_model", pop_mean = 0)
 }
 \arguments{
 \item{var_name}{the variable to find the t-value for, in the form "educ" or "exper" etc.}

@@ -4,10 +4,10 @@
 \alias{ADF}
 \title{ADF Test}
 \usage{
-ADF(var, df, type = "type2")
+ADF(my_var, df, type = "type2")
 }
 \arguments{
-\item{var}{The variable to be tested, with the null hypothesis stationary (random walk) and the alternative as non-stationary.}
+\item{my_var}{The variable to be tested, with the null hypothesis stationary (random walk) and the alternative as non-stationary.}
 
 \item{df}{The data frame where the variable is contained, e.g. "my_dataframe".}
 
@@ -20,6 +20,8 @@ The result of the ADF test, and the first difference of the variable if it is st
 Conduct an ADF test and automatically find the first difference if the variable is non-stationary.
 }
 \examples{
-data<-ADF("linvpc", data)
-data<-ADF("linvpc", data, type="type1")
+file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+data <- read.delim(file)
+data <- ADF("linvpc", data)
+data <- ADF("lpop", data, type="type1")
 }
