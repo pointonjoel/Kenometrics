@@ -20,11 +20,9 @@ ADF <-
   function (my_var, df,type="type2"){
     if (is.null(my_var)) {
       print("Please give the name of the variable to be tested.")
-      break
     }
     if (is.null(df)) {
       print("Please give the data frame in which the variable is contained.")
-      break
     }
     #frame_data=data.matrix(df)
     adf_data <- df[[my_var]]
@@ -33,7 +31,7 @@ ADF <-
     for (n in 1:length(ADF[[type]][,3])){
       if(ADF[[type]][,3][n]< 0.05){print(
         paste("beta",n, " is not significant"))
-        }
+      }
       else {
         print(paste("beta",n, " is significant"))
         if (n==1){

@@ -27,14 +27,29 @@ You can install the released version of Kenometrics from [CRAN](https://CRAN.R-p
 ``` r
 install.packages("Kenometrics")
 ```
+To install the latest development version from GitHub:
+
+install.packages("remotes")
+remotes::install_github("pointonjoel/Kenometrics")
+
+## Overview
+
+The Kenometrics package enables lecturers and students to teach and implement fundemental econometric techniques. Below is a summary of the functions on offer and how they can be used:
+1. get_data() A single function to find and source data from a variety of sources (Wooldridge, FRED, txt, Excel)
+2. ttest() Conduct a t-test (with a specific hypothesised mean, not necessarily 0)
+3. make_ts() Make the data time-series (to allow for lagged variables etc.)
+4. chow() Conduct a chow test (it adds an intercept and dummy slope and tests the significance depending on if we are testing for a break in the intercept, slope or both)
+5. ADF() Conduct an ADF test (and if the data are non stationary, it adds the first-difference to the data frame)
+6. LRM() Find and test the significance of the long run multiplier
 
 ## Example
+When importing data, students may often be overwhelmed with the specifics needed when importing from a variety of sources. Whilst the Wooldridge package allows for importing datasets from the [Introductory Econometrics textbook](https://blackwells.co.uk/bookshop/product/Introductory-Econometrics-by-Jeffrey-M-Wooldridge-author/9781305270107), having one function complete with FRED and Excel integration simplies things further. 
 
-This is a basic example which shows you how to solve a common problem:
+To import data to the current environment, simply specify the name of the file/dataset and the type of data.
 
 ```{r example}
 library(Kenometrics)
-## basic example code
+source_data("hseinv", woolridge)
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:

@@ -23,8 +23,9 @@ Imports:
     base,
     stats,
     aTSA,
-    utils
+    utils,
+    readr
 Suggests:
-    knitr
+    knitr (>= 1.7)
 Depends: 
     R (>= 2.10)

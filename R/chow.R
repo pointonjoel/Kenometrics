@@ -16,25 +16,20 @@
 #' @examples
 #' file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
 #' data <- read.delim(file)
-#' chow(1960, "Year", data, "linvpc ~ lpop", "both")
-#' chow(1960, "Time", my_data, "lpop ~ price, L(linvpc,0:2) + p", "intercept")
+#' chow(1960, "year", data, "linvpc ~ lpop", "both")
 chow <-
   function (possible_break, time_var="year", df, model, type){#type can be intercept, slope or both
     if (is.null(possible_break)) {
       print("Please give the year in which the break is believed to have occured")
-      break
     }
     if (is.null(df)) {
       print("Please input data frame")
-      break
     }
     if (is.null(model)) {
       print("Please input the desired model")
-      break
     }
     if (is.null(type)) {
       print("Please specify if the test is for a break in the intercept, slope or both")
-      break
     }
     df[["D"]] <- ifelse(df[[time_var]] < possible_break, 0, 1)
     df[["Dx"]] <- df$D * df[[time_var]]
@@ -62,4 +57,4 @@ chow <-
         print("The slope dummy is significant, so a  structural break in the slope has occured")
       }
     }
-  }
+  }#chow(1960, "Time", my_data, "lpop ~ price, L(linvpc,0:2) + p", "intercept") for another test!

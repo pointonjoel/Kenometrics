@@ -12,6 +12,9 @@
 #'
 #' @importFrom stats pt
 #' @examples
+#' file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+#' data <- read.delim(file)
+#' linear_model <- lm(linv ~ lpop + lprice, data=data)
 #' ttest("lpop", data, linear_model, 0)
 #' \dontrun{
 #' ttest("educ", my_df, chow_model, 1)
@@ -20,11 +23,9 @@ ttest <-
   function (var_name, df, model="my_model", pop_mean=0){
     if (is.null(var_name)) {
       print("Please give variable name!")
-      break
     }
     if (is.null(df)) {
       print("Please input data frame")
-      break
     }
     estimate <- summary(model)$coefficients[var_name , 1]
     se <- summary(model)$coefficients[var_name , 2]

@@ -26,6 +26,5 @@ Conduct a chow test on a desired model for a structural break in either the inte
 \examples{
 file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
 data <- read.delim(file)
-chow(1960, "Year", data, "linvpc ~ lpop", "both")
-chow(1960, "Time", my_data, "lpop ~ price, L(linvpc,0:2) + p", "intercept")
+chow(1960, "year", data, "linvpc ~ lpop", "both")
 }

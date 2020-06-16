@@ -17,12 +17,10 @@
 #' @importFrom utils read.table data
 #' @examples
 #' data <- get_data("hseinv", "wooldridge") #add functionality for using FRED!
-#' my_data <- get_data("NASA", "txt", "/", FALSE, wd="C:/Users/point/Documents/R/Kenometrics/R")
 get_data <-
   function (name, type="wooldridge",delim="",header=TRUE,wd=wd, ...){
     if (is.null(name)) {
       print("Please give the name of the file.")
-      break
     }
     if(type=="wooldridge"){
       df <- utils::data(name) #importing the data from the wooldridge package
@@ -40,5 +38,5 @@ get_data <-
     if(type=="FRED"){
       df <- FRED_data <- fredr::fredr_request(series_id="CLVMNACSCAB1GQUK", endpoint = "series/observations",...)
     }
-  return(df)
-  }
+    return(df)
+  } #my_data <- get_data("NASA", "txt", "/", FALSE, wd="C:/Users/point/Documents/R/Kenometrics/R") for the other example!

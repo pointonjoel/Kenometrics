@@ -27,5 +27,4 @@ Import data from a variety of sources
 }
 \examples{
 data <- get_data("hseinv", "wooldridge") #add functionality for using FRED!
-my_data <- get_data("NASA", "txt", "/", FALSE, wd="C:/Users/point/Documents/R/Kenometrics/R")
 }

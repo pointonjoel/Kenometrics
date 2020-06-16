@@ -4,7 +4,7 @@ author: "Joel Pointon"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Kenometrics upport}
+  %\VignetteIndexEntry{Kenometrics Support}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
