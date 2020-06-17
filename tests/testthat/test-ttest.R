@@ -1,4 +1,4 @@
-context("Testing get_data functionailty")
+context("Testing ttest functionailty")
 library(Kenometrics)
 file = system.file("extdata", "NASA.xlsx", package="Kenometrics")
 my_wd =substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)

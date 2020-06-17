@@ -131,5 +131,9 @@ file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
 #data <- make_ts("year", data)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. 
+#codecov(token = "7362364f-d882-438c-8156-339b77b22474")
+
+#finsih unit testing
+#check the examples above which are commented out
 
