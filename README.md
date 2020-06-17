@@ -248,7 +248,8 @@ chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
 #> Multiple R-squared:  0.339,  Adjusted R-squared:  0.2868 
 #> F-statistic: 6.495 on 3 and 38 DF,  p-value: 0.001173
 #> 
-#> [1] "The dummies are NOT jointly significant, so a  structural break in the intercept and slope has NOT occured"
+#> [1] "The dummies are NOT jointly significant, so a structural break in the intercept"
+#> [2] "and slope has NOT occured"
 ```
 
 ``` r
@@ -258,4 +259,8 @@ file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
 ```
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
+up-to-date. \#codecov(token = “7362364f-d882-438c-8156-339b77b22474”)
+
+\#finsih unit testing \#check the examples above which are commented out
+\#make LRM function, use roxygen skeleton, add to README, run unit
+testing.

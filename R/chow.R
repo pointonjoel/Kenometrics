@@ -35,24 +35,20 @@ chow <-
       f_test <- car::linearHypothesis(chow_model, c("D=0", "Dx=0"))
       p_value <- f_test[["Pr(>F)"]][2]
       if (p_value<0.05){
-        print("The dummies are jointly significant,
-              so a  structural break in the intercept and slope has occured")
+        print(strwrap("The dummies are jointly significant, so a structural break in the intercept and slope has occured", width=80))
       }
       if (p_value>0.05){
-        print("The dummies are NOT jointly significant,
-              so a structural break in the intercept and slope has NOT occured")
+        print(strwrap("The dummies are NOT jointly significant, so a structural break in the intercept and slope has NOT occured", width=80))
       }
     }
     if (type=="intercept"){
       if (modelSummary[["coefficients"]]["D","Pr(>|t|)"]<0.05){
-        print("The intercept dummy is significant,
-              so a structural break in the intercept has occured")
+        print(strwrap("The intercept dummy is significnt so a structural break in the intercept has occured", width=80))
       }
     }
     if (type=="slope"){
       if (modelSummary[["coefficients"]]["Dx","Pr(>|t|)"]<0.05){
-        print("The slope dummy is significant,
-              so a structural break in the slope has occured")
+        print(strwrap("The slope dummy is significnt so a structural break in the slope has occured", width=80))
       }
     }
   }

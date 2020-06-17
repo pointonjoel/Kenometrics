@@ -136,4 +136,4 @@ You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-da
 
 #finsih unit testing
 #check the examples above which are commented out
-
+#make LRM function, use roxygen skeleton, add to README, run unit testing.
