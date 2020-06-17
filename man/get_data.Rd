@@ -4,30 +4,27 @@
 \alias{get_data}
 \title{Importing Data}
 \usage{
-get_data(
-  name,
-  type = "excel",
-  delim = "",
-  header = TRUE,
-  file_loc,
-  key = key,
-  ...
-)
+get_data(name, type = "excel", delim = "", header = TRUE, file_loc, key, ...)
 }
 \arguments{
-\item{name}{The filename of the dataset to be used, e.g. "hseinv" or "NASA", without the extension (i.e. "NASA", not "NASA.xlsx").  If using FRED, type the series id.}
+\item{name}{The filename of the dataset to be used, e.g. "hseinv"
+or "NASA", without the extension (i.e. "NASA", not "NASA.xlsx").
+If using FRED, type the series id.}
 
-\item{type}{The type of data, i.e "Wooldridge", "excel" or "FRED". If using FRED then the fredr_set_key() be used prior, with the series id as the name parameter.}
+\item{type}{The type of data, i.e "Wooldridge", "excel" or "FRED".}
 
-\item{delim}{The delimiter used for txt files, with whitespace/tab delimiter being the default.}
+\item{delim}{The delimiter used for txt files, with whitespace/
+tab delimiter being the default.}
 
 \item{header}{Use FALSE if your data has no header names.}
 
-\item{file_loc}{The working directory for the file, if appropriate. Note the use of "/" rather than "\", as is customary in R.}
+\item{file_loc}{The working directory for the file, if appropriate.
+Note the use of "/" rather than "\", as is customary in R.}
 
 \item{key}{The user's personal key used to access FRED's API}
 
-\item{...}{The additional parameters either for sourcing FRED data (start/end observations) or txt/csv files.}
+\item{...}{The additional parameters either for sourcing FRED data
+(start/end observations) or txt/csv files.}
 }
 \value{
 The dataset as a dataframe
@@ -39,12 +36,16 @@ Import data from a variety of sources
 #Code needed to obtain the NASA file on the user's computer
 file = system.file("extdata", "NASA.xlsx", package="Kenometrics")
 my_wd =substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)
-#Once the working directory has been obtained, the get_data function can be used
+#Once the working directory has been obtained, the get_data function
+#can be used
 
 NASA_data <- get_data("NASA", type="excel", file_loc = my_wd)
 
 some_data <- get_data("hseinv", "txt", file_loc=my_wd)
 
-my_data <- get_data(name="CLVMNACSCAB1GQUK", type="FRED", key="ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+#FRED requests can also be made; simply replace the key ("ABCDE")
+#with your personal access token - see Kenometrics_Support file
+#for details
+#my_data <- get_data(name="CLVMNACSCAB1GQUK", type="FRED", key="ABCDE")
 
 }

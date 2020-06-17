@@ -26,6 +26,8 @@ Imports:
     utils,
     readr
 Suggests:
-    knitr (>= 1.7)
+    knitr (>= 1.7),
+    testthat,
+    covr
 Depends: 
     R (>= 2.10)

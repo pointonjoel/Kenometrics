@@ -7,6 +7,8 @@ Readme
 
 <!-- badges: start -->
 
+[![Codecov test
+coverage](https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badge.svg)](https://codecov.io/gh/pointonjoel/Kenometrics?branch=master)
 <!-- badges: end -->
 
 The goal of Kenometrics is to provide a set of functions which allow
@@ -141,9 +143,24 @@ Simply specify the name of the file/dataset and the type of data.
 ``` r
 #Code needed to obtain the NASA file on the user's computer
 file = system.file("extdata", "NASA.xlsx", package="Kenometrics")
-wd =substr(file,0,nchar(file)-nchar("NASA.xlsx"))
+my_wd =substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)
 #Once the working directory has been obtained, the get_data function can be used
-NASA_data <- get_data("NASA", type="excel")
+NASA_data <- get_data("NASA", type="excel", file_loc = my_wd)
+print(NASA_data)
+#> # A tibble: 140 x 3
+#>     Year No_Smoothing `Lowess(5)`
+#>    <dbl>        <dbl>       <dbl>
+#>  1  1880        -0.16       -0.09
+#>  2  1881        -0.08       -0.12
+#>  3  1882        -0.1        -0.16
+#>  4  1883        -0.17       -0.2 
+#>  5  1884        -0.28       -0.23
+#>  6  1885        -0.32       -0.25
+#>  7  1886        -0.3        -0.26
+#>  8  1887        -0.35       -0.26
+#>  9  1888        -0.16       -0.26
+#> 10  1889        -0.1        -0.25
+#> # ... with 130 more rows
 ```
 
 Whilst the function defaults the working directory to the current
@@ -151,7 +168,9 @@ location of the workspace, students are encouraged to set a working
 directory prior to sourcing data. This can be done by using:
 
 ``` r
-wd="C:/Documents"
+my_wd="C:/Documents"
+#And then for usage
+#setwd(my_wd)
 ```
 
 Note the use of “/” rather than "", as is customary in R.
@@ -168,9 +187,42 @@ simple and free. For examples, see:
 
 ## T-tests
 
-Once data has been imported, a t-test can then be conducted. Orignarily,
-this is possible through the completing a linear regression and
-sumarising it.
+Once data has been imported, a t-test can then be conducted. Ordinarily,
+this is possible through the completing a linear regression and finding
+the summary of it.
+
+``` r
+simple_model <- lm(lprice ~ lpop + linvpc , data=hseinv)
+summary(simple_model)
+#> 
+#> Call:
+#> lm(formula = lprice ~ lpop + linvpc, data = hseinv)
+#> 
+#> Residuals:
+#>       Min        1Q    Median        3Q       Max 
+#> -0.054007 -0.030110 -0.000722  0.016743  0.084962 
+#> 
+#> Coefficients:
+#>              Estimate Std. Error t value Pr(>|t|)    
+#> (Intercept) -4.068122   0.566440  -7.182 1.21e-08 ***
+#> lpop         0.326166   0.045171   7.221 1.07e-08 ***
+#> linvpc      -0.002631   0.041633  -0.063     0.95    
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> Residual standard error: 0.03788 on 39 degrees of freedom
+#> Multiple R-squared:  0.6613, Adjusted R-squared:  0.6439 
+#> F-statistic: 38.07 on 2 and 39 DF,  p-value: 6.8e-10
+```
+
+However, this assumes that the hypothesised population mean is 0; there
+is no scope to change it. To conduct a T-Test where there is a non-0
+population mean is simple with Kenometrics:
+
+``` r
+#t_stat <- ttest("linvpc", some_data, "simple_model", pop_mean = -1)
+#print(t_stat)
+```
 
 ``` r
 chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
@@ -201,8 +253,8 @@ chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
 
 ``` r
 file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
-data <- read.delim(file)
-data <- make_ts("year", data)
+#data <- read.delim(file)
+#data <- make_ts("year", data)
 ```
 
 You’ll still need to render `README.Rmd` regularly, to keep `README.md`

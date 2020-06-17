@@ -4,22 +4,27 @@
 \alias{ttest}
 \title{T-Test}
 \usage{
-ttest(var_name, df, model = "my_model", pop_mean = 0)
+ttest(var_name, df, model, pop_mean = 0)
 }
 \arguments{
-\item{var_name}{the variable to find the t-value for, in the form "educ" or "exper" etc.}
+\item{var_name}{the variable to find the t-value for, in the form
+"educ" or "exper" etc.}
 
-\item{df}{the dataframe which the model is based upon, e.g. data or NASA.}
+\item{df}{the dataframe which the model is based upon, e.g. my_data
+or NASA.}
 
-\item{model}{the model which the parameter pertains to, e.g. my_model or chow_model.}
+\item{model}{the model which the parameter pertains to, e.g. my_model
+or chow_model.}
 
-\item{pop_mean}{the value which the population mean is hypothesised to be, typically 0.}
+\item{pop_mean}{the value which the population mean is hypothesised
+to be, typically 0.}
 }
 \value{
 The output from \code{\link{print}}, giving the T-Value and P-Value.
 }
 \description{
-Obtain the T-value and P-value for any parameter in a model, given a hypothesised mean.
+Obtain the T-value and P-value for any parameter in a model,
+given a hypothesised mean.
 }
 \examples{
 file = system.file("extdata", "hseinv.txt", package="Kenometrics")

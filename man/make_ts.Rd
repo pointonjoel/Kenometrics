@@ -7,7 +7,8 @@
 make_ts(time_var, df)
 }
 \arguments{
-\item{time_var}{The variable in the dataset which marks the data/time of the observations. E.g. "year" or "month"}
+\item{time_var}{The variable in the dataset which marks the
+date/time of the observations. E.g. "year" or "month"}
 
 \item{df}{The dataframe which needs to be made a time series data}
 }

@@ -4,3 +4,4 @@
 ^data-raw$
 ^cran_comments\.md$
 ^LICENSE$
+^codecov\.yml$

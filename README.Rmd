@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 # Kenometrics
 
 <!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badge.svg)](https://codecov.io/gh/pointonjoel/Kenometrics?branch=master)
 <!-- badges: end -->
 
 The goal of Kenometrics is to provide a set of functions which allow econometrics students to simply conduct important manipulations and tests.
@@ -90,7 +91,7 @@ Whilst the function defaults the working directory to the current location of th
 ```{r setwd}
 my_wd="C:/Documents"
 #And then for usage
-setwd(my_wd)
+#setwd(my_wd)
 ```
 
 Note the use of "/" rather than "\", as is customary in R.
@@ -103,15 +104,31 @@ Students can also import files from FRED using Kenometrics, once they have obtai
 
 ## T-tests
 
-Once data has been imported, a t-test can then be conducted. Orignarily, this is possible through the completing a linear regression and sumarising it.
+Once data has been imported, a t-test can then be conducted. Ordinarily, this is possible through the completing a linear regression and finding the summary of it.
+
+```{r}
+simple_model <- lm(lprice ~ lpop + linvpc , data=hseinv)
+summary(simple_model)
+```
+
+However, this assumes that the hypothesised population mean is 0; there is no scope to change it. To conduct a T-Test where there is a non-0 population mean is simple with Kenometrics:
+
+```{r}
+#t_stat <- ttest("linvpc", some_data, "simple_model", pop_mean = -1)
+#print(t_stat)
+```
+
+
+
+
 ```{r chow}
 chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
 ```
 
-```{r cars}
+```{r delim}
 file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
-data <- read.delim(file)
-data <- make_ts("year", data)
+#data <- read.delim(file)
+#data <- make_ts("year", data)
 ```
 
 You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
