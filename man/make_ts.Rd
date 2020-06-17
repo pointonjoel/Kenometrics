@@ -18,7 +18,7 @@ The new dataset
 Convert the entire dataset to time-series data type
 }
 \examples{
-file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 data <- read.delim(file)
 data <- make_ts("year", data)
 }

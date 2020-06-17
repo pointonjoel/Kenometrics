@@ -12,7 +12,7 @@
 #'
 #' @importFrom stats pt
 #' @examples
-#' file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+#' file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 #' data <- read.delim(file)
 #' linear_model <- lm(linv ~ lpop + lprice, data=data)
 #' ttest("lpop", data, linear_model, 0)

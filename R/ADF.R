@@ -12,7 +12,7 @@
 #' @importFrom aTSA adf.test
 #' @importFrom stats lag
 #' @examples
-#' file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+#' file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 #' data <- read.delim(file)
 #' data <- ADF("linvpc", data)
 #' data <- ADF("lpop", data, type="type1")

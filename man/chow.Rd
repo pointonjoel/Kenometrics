@@ -24,7 +24,7 @@ The output from \code{\link{print}}, giving the result of the chow test.
 Conduct a chow test on a desired model for a structural break in either the intercept, slope, or both.
 }
 \examples{
-file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 data <- read.delim(file)
 chow(1960, "year", data, "linvpc ~ lpop", "both")
 }

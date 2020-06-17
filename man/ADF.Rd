@@ -20,7 +20,7 @@ The result of the ADF test, and the first difference of the variable if it is st
 Conduct an ADF test and automatically find the first difference if the variable is non-stationary.
 }
 \examples{
-file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 data <- read.delim(file)
 data <- ADF("linvpc", data)
 data <- ADF("lpop", data, type="type1")

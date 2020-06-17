@@ -22,7 +22,7 @@ The output from \code{\link{print}}, giving the T-Value and P-Value.
 Obtain the T-value and P-value for any parameter in a model, given a hypothesised mean.
 }
 \examples{
-file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 data <- read.delim(file)
 linear_model <- lm(linv ~ lpop + lprice, data=data)
 ttest("lpop", data, linear_model, 0)

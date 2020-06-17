@@ -9,7 +9,7 @@
 #'
 #' @import zoo
 #' @examples
-#' file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
+#' file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 #' data <- read.delim(file)
 #' data <- make_ts("year", data)
 make_ts <-
