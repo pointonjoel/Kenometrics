@@ -52,7 +52,9 @@ get_data <-
     if(type=="FRED"){
       fredr::fredr_set_key(key)
       df <-
-        fredr::fredr_request(series_id=name, endpoint = "series/observations",...)
+        fredr::fredr_request(
+          series_id=name, endpoint = "series/observations",...
+          )
     }
     return(df)
   }

@@ -65,7 +65,7 @@ The Kenometrics package takes many existing packages and incorporates them as de
 ## Importing data
 When importing data, students may often be overwhelmed with the specifics needed when importing from a variety of sources. The having one function complete with FRED and Excel integration simplies things further. 
 
-To import data to the current environment, there are two ways depending on the type of data. It is reccomended that users also import the [wooldridge package](https://cran.r-project.org/web/packages/wooldridge/index.html), which contains all of the [datasets used in the textbook's examples](https://www.cengage.com/aise/economics/wooldridge_3e_datasets/):
+To import data to the current environment, there are two ways depending on the type of data. It is reccomended that users also import the [wooldridge package](https://cran.r-project.org/web/packages/wooldridge/index.html), which contains all of the [datasets used in the textbook's examples](https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781111531041):
 
 ```{r hseinv}
 library(Kenometrics)
