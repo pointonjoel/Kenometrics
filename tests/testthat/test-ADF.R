@@ -3,9 +3,6 @@ library(Kenometrics)
 file <- system.file("extdata", "NASA.xlsx", package="Kenometrics")
 my_wd <- substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)
 hseinv_data <- get_data("hseinv", "txt", file_loc=my_wd)
-NASA_data <- get_data("NASA", "excel", file_loc=my_wd)
-cement_data <- get_data("cement", "txt", file_loc=my_wd)
-ezunem_data <- get_data("ezunem", "txt", file_loc=my_wd)
 
 test_that("ADF with NS variable", {
   ADF_data <- ADF("lpop", hseinv_data, type="type1")

@@ -91,7 +91,7 @@ Whilst the function defaults the working directory to the current location of th
 
 ```{r setwd}
 my_wd="C:/Documents"
-#And then for usage
+#And then for usage:
 #setwd(my_wd)
 ```
 
@@ -100,7 +100,7 @@ Note the use of "/" rather than "\", as is customary in R.
 Students can also import files from FRED using Kenometrics, once they have obtained a [FRED API key](https://research.stlouisfed.org/docs/api/api_key.html), which is simple and free. For examples, see:
 
 ```{r help, results = FALSE}
-?get_data
+#?get_data
 ```
 
 ## T-tests
@@ -143,7 +143,7 @@ TS_data <- make_ts("year", hseinv_data)
 hseinv_data <- make_ts("year", hseinv_data)
 ```
 
-Note that there is not currently support for running an ADF or chow test after you have declared a dataset time series. Consequently, it is reccomended that the original dataset is preserved when the time series function is used. This is a feature which is currently being explored, but is difficult to implement due to the nature of the "zoo" package.
+Note that there is not currently support for running an ADF or chow test after you have declared a dataset time series. Consequently, it is reccomended that the original dataset is preserved when the time series function is used. This is a feature which is currently being explored.
 
 The user can then use the dynlm function to add lagged variables to their model. 
 
@@ -153,6 +153,17 @@ lagged_model <- dynlm(lpop ~ price + L(linvpc,0:2), data=TS_data)
 summary(lagged_model)
 ```
 
-#finsih unit testing
-#check the examples above which are commented out
+
+## ADF test
+
+An ADF can ordinarily be run without Kenometrics. However, students often find the results confusing and difficult to understand. Kenometrics selects an appropriate test (defaulting to "constant, no trend") for students automatically, yet leaving the option for users to select their own. Additionally, if the variable is found to be non-stationary, the function calculates the 1st difference and returns the original dataset with a the 1st difference appended. This allows students to then run regressions knowing that all variables are stationary.
+
+```{r}
+#overrides the previous dataset
+#If the variable is stationary then no change is made
+#If the variable is non-stationary then the 1st difference is appended
+hseinv_data <- ADF("lpop", hseinv_data, type="type1")
+```
+
+
 #make LRM function, use roxygen skeleton, add to README, run unit testing.

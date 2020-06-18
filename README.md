@@ -113,7 +113,7 @@ on the type of data. It is reccomended that users also import the
 [wooldridge
 package](https://cran.r-project.org/web/packages/wooldridge/index.html),
 which contains all of the [datasets used in the textbook’s
-examples](https://www.cengage.com/aise/economics/wooldridge_3e_datasets/):
+examples](https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781111531041):
 
 ``` r
 library(Kenometrics)
@@ -144,22 +144,23 @@ Simply specify the name of the file/dataset and the type of data.
 #Code needed to obtain the NASA file on the user's computer
 file = system.file("extdata", "NASA.xlsx", package="Kenometrics")
 my_wd =substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)
+
 #Once the working directory has been obtained, the get_data function can be used
 NASA_data <- get_data("NASA", type="excel", file_loc = my_wd)
 print(NASA_data)
 #> # A tibble: 140 x 3
-#>     Year No_Smoothing `Lowess(5)`
-#>    <dbl>        <dbl>       <dbl>
-#>  1  1880        -0.16       -0.09
-#>  2  1881        -0.08       -0.12
-#>  3  1882        -0.1        -0.16
-#>  4  1883        -0.17       -0.2 
-#>  5  1884        -0.28       -0.23
-#>  6  1885        -0.32       -0.25
-#>  7  1886        -0.3        -0.26
-#>  8  1887        -0.35       -0.26
-#>  9  1888        -0.16       -0.26
-#> 10  1889        -0.1        -0.25
+#>     Year No_Smoothing Lowess
+#>    <dbl>        <dbl>  <dbl>
+#>  1  1880        -0.16  -0.09
+#>  2  1881        -0.08  -0.12
+#>  3  1882        -0.1   -0.16
+#>  4  1883        -0.17  -0.2 
+#>  5  1884        -0.28  -0.23
+#>  6  1885        -0.32  -0.25
+#>  7  1886        -0.3   -0.26
+#>  8  1887        -0.35  -0.26
+#>  9  1888        -0.16  -0.26
+#> 10  1889        -0.1   -0.25
 #> # ... with 130 more rows
 ```
 
@@ -224,8 +225,16 @@ population mean is simple with Kenometrics:
 #print(t_stat)
 ```
 
+## Chow tests
+
+With Kenometrics, a Chow test can easily be conducted. The fucntion
+works by adding both an intercept and a slope dummy, allowing the user
+to select whether the test is for the intercept, slope, or both.
+
 ``` r
 chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
+#> linvpc ~ lpop + D + Dx
+#> <environment: 0x0000000008fe7658>
 #> 
 #> Time series regression with "numeric" data:
 #> Start = 1, End = 42
@@ -248,19 +257,73 @@ chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
 #> Multiple R-squared:  0.339,  Adjusted R-squared:  0.2868 
 #> F-statistic: 6.495 on 3 and 38 DF,  p-value: 0.001173
 #> 
-#> [1] "The dummies are NOT jointly significant, so a structural break in the intercept"
-#> [2] "and slope has NOT occured"
+#> [1] "The dummies are NOT jointly significant; a structural break has NOT occured"
 ```
+
+## Making data time series
+
+In order to add lagged variables to regressions, the data needs to be
+declared time series. This can be done easily, with the ability to
+override the old data frame or make a new one:
 
 ``` r
-file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
-#data <- read.delim(file)
-#data <- make_ts("year", data)
+#Code needed to obtain the data file on the user's computer
+file <-  system.file("extdata", "NASA.xlsx", package="Kenometrics")
+my_wd <- substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)
+hseinv_data <- get_data("hseinv", "txt", file_loc=my_wd)
+
+#Using the function to make a new data set that is time series
+TS_data <- make_ts("year", hseinv_data)
+
+#Using the function to override the old data with time series data
+#Note that this is strongly discouraged, see below.
+hseinv_data <- make_ts("year", hseinv_data)
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. \#codecov(token = “7362364f-d882-438c-8156-339b77b22474”)
+Note that there is not currently support for running an ADF or chow test
+after you have declared a dataset time series. Consequently, it is
+reccomended that the original dataset is preserved when the time series
+function is used. This is a feature which is currently being explored.
+
+The user can then use the dynlm function to add lagged variables to
+their model.
+
+``` r
+library(dynlm)
+#> Loading required package: zoo
+#> 
+#> Attaching package: 'zoo'
+#> The following objects are masked from 'package:base':
+#> 
+#>     as.Date, as.Date.numeric
+lagged_model <- dynlm(lpop ~ price + L(linvpc,0:2), data=TS_data)
+summary(lagged_model)
+#> 
+#> Time series regression with "zoo" data:
+#> Start = Jan 1949, End = Jan 1988
+#> 
+#> Call:
+#> dynlm(formula = lpop ~ price + L(linvpc, 0:2), data = TS_data)
+#> 
+#> Residuals:
+#>      Min       1Q   Median       3Q      Max 
+#> -0.22169 -0.07194  0.02768  0.05565  0.11692 
+#> 
+#> Coefficients:
+#>                 Estimate Std. Error t value Pr(>|t|)    
+#> (Intercept)      10.9222     0.3271  33.389  < 2e-16 ***
+#> price             1.6264     0.2927   5.557 2.97e-06 ***
+#> L(linvpc, 0:2)0   0.2612     0.1123   2.326   0.0259 *  
+#> L(linvpc, 0:2)1  -0.1121     0.1384  -0.810   0.4234    
+#> L(linvpc, 0:2)2   0.1769     0.1174   1.508   0.1407    
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> Residual standard error: 0.086 on 35 degrees of freedom
+#> Multiple R-squared:  0.6974, Adjusted R-squared:  0.6629 
+#> F-statistic: 20.17 on 4 and 35 DF,  p-value: 1.084e-08
+```
 
 \#finsih unit testing \#check the examples above which are commented out
-\#make LRM function, use roxygen skeleton, add to README, run unit
-testing.
+- can you use ADF after make\_ts? \#make LRM function, use roxygen
+skeleton, add to README, run unit testing.

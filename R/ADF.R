@@ -23,10 +23,9 @@
 #' data <- ADF("lpop", data, type="type1")
 ADF <-
   function (my_var, df,type="type2"){
-    #frame_data=data.matrix(df)
+    changed=FALSE
     adf_data <- df[[my_var]]
     ADF <- aTSA::adf.test(adf_data)
-    print(ADF)
     for (n in 1:length(ADF[[type]][,3])){
       if(ADF[[type]][,3][n]< 0.05){print(
         paste("beta",n, " is not significant"))
@@ -35,26 +34,28 @@ ADF <-
         print(paste("beta",n, " is significant"))
         if (n==1){
           print(paste(my_var, "is not stationary"))
-          #print(df)
 
           #getting the lag
           lagged_data <- Hmisc::Lag(adf_data, 1)
 
           #calculating the lag
           difference <- adf_data-lagged_data
-          print(difference)
 
           #making the name that we want the new, lagged var to have
           var_diff<-paste(toString(my_var), "_diff", sep = "")
 
-          #appending the lag
+          #appending the difference
           df[[var_diff]] <- difference
-
-          print(df[[var_diff]])
-          print("The 1st difference has been appended to the data frame")
-          #print(df)
+          changed=TRUE
         }
       }
+    }
+    #Informing the user of the outcome
+    if (changed==TRUE){
+      print("The 1st difference has been appended to the data frame")
+    }
+    if (changed==FALSE){
+      print("No change has been made to the data frame")
     }
     return(df)
   }
