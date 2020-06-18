@@ -25,43 +25,53 @@
 #' #chow(1960, "Time", my_data, "lpop ~ price, L(linvpc,0:2) + p", "intercept")
 chow <-
   function (possible_break, time_var="year", df, model, type){
-    df[["D"]] <- ifelse(df[[time_var]] < possible_break, 0, 1)
-    df[["Dx"]] <- df$D * df[[time_var]]
-    new_model <- stats::as.formula(paste(model, " + D + Dx", sep="" ))
-    chow_model <- dynlm(new_model, data=df)
-    modelSummary <- summary(chow_model)
-    print(modelSummary)
-    if (type=="both"){
-      f_test <- car::linearHypothesis(chow_model, c("D=0", "Dx=0"))
-      p_value <- f_test[["Pr(>F)"]][2]
-      if (p_value<0.05){
-        result <-
-          "The dummies are jointly significant, so a structural break has occured"
+    #Ensuring one of intercept/slope/both is chosen
+    v <- c('intercept','slope','both')
+    result <- type %in% v
+    if (result==TRUE){
+      df[["D"]] <- ifelse(df[[time_var]] < possible_break, 0, 1)
+      df[["Dx"]] <- df$D * df[[time_var]]
+      new_model <- stats::as.formula(paste(model, " + D + Dx", sep="" ))
+      print(new_model)
+      chow_model <- dynlm(new_model, data=df)
+      modelSummary <- summary(chow_model)
+      print(modelSummary)
+      if (type=="both"){
+        f_test <- car::linearHypothesis(chow_model, c("D=0", "Dx=0"))
+        p_value <- f_test[["Pr(>F)"]][2]
+        if (p_value<0.05){
+          result <-
+      "The dummies are jointly significant, so a structural break has occured"
+        }
+        if (p_value>0.05){
+          result <-
+  "The dummies are NOT jointly significant; a structural break has NOT occured"
+        }
       }
-      if (p_value>0.05){
-        result <-
-          "The dummies are NOT jointly significant, so a structural break has NOT occured"
+      if (type=="intercept"){
+        if (modelSummary[["coefficients"]]["D","Pr(>|t|)"]<0.05){
+          result <-
+      "The intercept dummy is significant so a structural break has occured"
+        }
+        if (modelSummary[["coefficients"]]["D","Pr(>|t|)"]>0.05){
+          result <-
+"The intercept dummy is NOT significant so a structural break has NOT occured"
+        }
+      }
+      if (type=="slope"){
+        if (modelSummary[["coefficients"]]["Dx","Pr(>|t|)"]<0.05){
+          result <-
+            "The slope dummy is significant so a structural break has occured"
+        }
+        if (modelSummary[["coefficients"]]["Dx","Pr(>|t|)"]>0.05){
+          result <-
+    "The slope dummy is NOT significant so a structural break has NOT occured"
+        }
       }
     }
-    if (type=="intercept"){
-      if (modelSummary[["coefficients"]]["D","Pr(>|t|)"]<0.05){
-        result <-
-          "The intercept dummy is significant so a structural break has occured"
-      }
-      if (modelSummary[["coefficients"]]["D","Pr(>|t|)"]>0.05){
-        result <-
-          "The intercept dummy is NOT significant so a structural break has NOT occured"
-      }
-    }
-    if (type=="slope"){
-      if (modelSummary[["coefficients"]]["Dx","Pr(>|t|)"]<0.05){
-        result <-
-          "The slope dummy is significant so a structural break has occured"
-      }
-      if (modelSummary[["coefficients"]]["Dx","Pr(>|t|)"]>0.05){
-        result <-
-          "The slope dummy is NOT significant so a structural break has NOT occured"
-      }
+    if (result==FALSE){
+      result <-
+        "Please ensure one of intercept/slope/both is chosen"
     }
     return(print(strwrap(result, width=80)))
   }

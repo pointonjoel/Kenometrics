@@ -81,6 +81,7 @@ Kenometrics provides support for a variety of other types of datasets. Simply sp
 #Code needed to obtain the NASA file on the user's computer
 file = system.file("extdata", "NASA.xlsx", package="Kenometrics")
 my_wd =substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)
+
 #Once the working directory has been obtained, the get_data function can be used
 NASA_data <- get_data("NASA", type="excel", file_loc = my_wd)
 print(NASA_data)
@@ -118,21 +119,39 @@ However, this assumes that the hypothesised population mean is 0; there is no sc
 #print(t_stat)
 ```
 
+## Chow tests
 
-
-
+With Kenometrics, a Chow test can easily be conducted. The fucntion works by adding both an intercept and a slope dummy, allowing the user to select whether the test is for the intercept, slope, or both.
 ```{r chow}
 chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
 ```
 
-```{r delim}
-file = system.file("extdata", "sample_data_hseinv.txt", package="Kenometrics")
-#data <- read.delim(file)
-#data <- make_ts("year", data)
+## Making data time series
+
+In order to add lagged variables to regressions, the data needs to be declared time series. This can be done easily, with the ability to override the old data frame or make a new one:
+```{r TS}
+#Code needed to obtain the data file on the user's computer
+file <-  system.file("extdata", "NASA.xlsx", package="Kenometrics")
+my_wd <- substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)
+hseinv_data <- get_data("hseinv", "txt", file_loc=my_wd)
+
+#Using the function to make a new data set that is time series
+TS_data <- make_ts("year", hseinv_data)
+
+#Using the function to override the old data with time series data
+#Note that this is strongly discouraged, see below.
+hseinv_data <- make_ts("year", hseinv_data)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. 
-#codecov(token = "7362364f-d882-438c-8156-339b77b22474")
+Note that there is not currently support for running an ADF or chow test after you have declared a dataset time series. Consequently, it is reccomended that the original dataset is preserved when the time series function is used. This is a feature which is currently being explored, but is difficult to implement due to the nature of the "zoo" package.
+
+The user can then use the dynlm function to add lagged variables to their model. 
+
+```{r}
+library(dynlm)
+lagged_model <- dynlm(lpop ~ price + L(linvpc,0:2), data=TS_data)
+summary(lagged_model)
+```
 
 #finsih unit testing
 #check the examples above which are commented out

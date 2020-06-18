@@ -13,7 +13,7 @@
 #'  if it is stationary
 #' @export
 #'
-#' @import zoo
+#' @importFrom Hmisc Lag
 #' @importFrom aTSA adf.test
 #' @importFrom stats lag
 #' @examples
@@ -35,19 +35,24 @@ ADF <-
         print(paste("beta",n, " is significant"))
         if (n==1){
           print(paste(my_var, "is not stationary"))
-          #making it TS if it isn't already
-          zoo_df <- read.zoo(df)
-          #-1 means the lag of 1
-          lags <- stats::lag(zoo_df, 0:-1)
-          #making the 'numeric' df become a df
-          lag_df <- data.frame(lags)
-          #making the name that the df will have the lag under
-          lag_var <- paste(toString(my_var), ".lag.1", sep = "")
+          #print(df)
+
+          #getting the lag
+          lagged_data <- Hmisc::Lag(adf_data, 1)
+
+          #calculating the lag
+          difference <- adf_data-lagged_data
+          print(difference)
+
           #making the name that we want the new, lagged var to have
           var_diff<-paste(toString(my_var), "_diff", sep = "")
-          #calculating the 1st difference and appending it to the original df df
-          df[[var_diff]] <- df[[my_var]]-lag_df[[lag_var]]
+
+          #appending the lag
+          df[[var_diff]] <- difference
+
+          print(df[[var_diff]])
           print("The 1st difference has been appended to the data frame")
+          #print(df)
         }
       }
     }

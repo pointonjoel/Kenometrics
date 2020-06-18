@@ -8,7 +8,7 @@ make_ts(time_var, df)
 }
 \arguments{
 \item{time_var}{The variable in the dataset which marks the
-date/time of the observations. E.g. "year" or "month"}
+year of the observations. E.g. "year"}
 
 \item{df}{The dataframe which needs to be made a time series data}
 }
@@ -21,5 +21,5 @@ Convert the entire dataset to time-series data type
 \examples{
 file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 data <- read.delim(file)
-data <- make_ts("year", data)
+TS_data <- make_ts("year", data)
 }

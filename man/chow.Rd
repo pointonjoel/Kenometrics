@@ -12,7 +12,7 @@ believed to have occured, e.g. 1969.}
 
 \item{time_var}{The variable which marks the data/time of the observations.}
 
-\item{df}{The data frame which holds the variables.}
+\item{df}{The data frame which holds the variables. e.g. cement_data}
 
 \item{model}{The model which the chow test is to be conducted on.
 Enter this in string form, i.e. "lpop ~ price, L(linvpc,0:2) + p"}

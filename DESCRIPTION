@@ -24,7 +24,8 @@ Imports:
     stats,
     aTSA,
     utils,
-    readr
+    readr,
+    Hmisc
 Suggests:
     knitr (>= 1.7),
     testthat,
