@@ -8,6 +8,10 @@
 #' @param type The three types are "no constant, no trend",
 #' "constant, no trend" and "constant, trend". The default is "type2",
 #' but there is also "type1" and "type3".
+#' @param time_var If the supplied data frame has previously been converted to
+#' time series using make_ts and/or the "zoo" package, then a time variable must
+#' be specified. The variable in the dataset which marks the year of the
+#' observations. E.g. "year"
 #'
 #' @return The result of the ADF test, and the first difference of the variable
 #'  if it is stationary
@@ -22,8 +26,26 @@
 #' data <- ADF("linvpc", data)
 #' data <- ADF("lpop", data, type="type1")
 ADF <-
-  function (my_var, df,type="type2"){
-    changed=FALSE
+  function (my_var, df,type="type2",time_var){
+    #Testing to see if the df is time series
+    zoo_types <- c('zoo','yearmon')
+    TS <- class(df[[1]]) %in% zoo_types
+
+    #converting TS data to numeric type
+    if (TS==TRUE){
+      variables <- dput(names(df))
+      numeric_data <- as.data.frame(as.numeric(df[[time_var]]))
+      for (k in 1:length(df)){
+        if (!variables[k]==time_var){
+        numeric_data[[k]] <- as.numeric(df[[k]])
+        }
+      }
+      names(numeric_data) <- variables
+      df <- numeric_data
+    }
+
+    #ADF code
+    changed <- FALSE
     adf_data <- df[[my_var]]
     ADF <- aTSA::adf.test(adf_data)
     for (n in 1:length(ADF[[type]][,3])){
@@ -46,7 +68,7 @@ ADF <-
 
           #appending the difference
           df[[var_diff]] <- difference
-          changed=TRUE
+          changed <- TRUE
         }
       }
     }

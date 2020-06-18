@@ -29,6 +29,24 @@ chow <-
     v <- c('intercept','slope','both')
     result <- type %in% v
     if (result==TRUE){
+      #Testing to see if the df is time series
+      zoo_types <- c('zoo','yearmon')
+      TS <- class(df[[1]]) %in% zoo_types
+
+      #converting TS data to numeric type
+      if (TS==TRUE){
+        variables <- dput(names(df))
+        numeric_data <- as.data.frame(as.numeric(df[[time_var]]))
+        for (k in 1:length(df)){
+          if (!variables[k]==time_var){
+            numeric_data[[k]] <- as.numeric(df[[k]])
+          }
+        }
+        names(numeric_data) <- variables
+        df <- numeric_data
+      }
+
+      #Chow test code
       df[["D"]] <- ifelse(df[[time_var]] < possible_break, 0, 1)
       df[["Dx"]] <- df$D * df[[time_var]]
       new_model <- stats::as.formula(paste(model, " + D + Dx", sep="" ))

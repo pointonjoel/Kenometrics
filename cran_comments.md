@@ -9,14 +9,12 @@ Joel Pointon
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs.
+-- R CMD check results ---------------------------------- Kenometrics 0.1.0 ----
+Duration: 1m 25.3s
 
-There was 1 NOTE:
+0 errors v | 0 warnings v | 0 notes v
 
-  - checking dependencies in R code … NOTE Namespace in Imports field
-    not imported from: ‘R6’
-    
-    R6 is a build-time dependency.
+R CMD check succeeded
 
 ## Downstream dependencies
 

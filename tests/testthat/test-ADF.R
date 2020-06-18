@@ -36,3 +36,11 @@ test_that("ADF with stationary variable", {
   expect_equal(dput(new_column), NULL
   )
 })
+
+test_that("ADF with stationary variable - WITH TS DATA", {
+  TS_data <- make_ts("year", hseinv_data)
+  ADF_data <- ADF("lpop", TS_data, type="type2", time_var="year")
+  new_column <- TS_data[["lpop_diff"]]
+  expect_equal(dput(new_column), NULL
+  )
+})

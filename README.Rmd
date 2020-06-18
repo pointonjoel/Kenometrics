@@ -1,5 +1,4 @@
 ---
-title: "Readme"
 output: github_document
 ---
 
@@ -143,16 +142,20 @@ TS_data <- make_ts("year", hseinv_data)
 hseinv_data <- make_ts("year", hseinv_data)
 ```
 
-Note that there is not currently support for running an ADF or chow test after you have declared a dataset time series. Consequently, it is reccomended that the original dataset is preserved when the time series function is used. This is a feature which is currently being explored.
-
 The user can then use the dynlm function to add lagged variables to their model. 
-
 ```{r}
 library(dynlm)
 lagged_model <- dynlm(lpop ~ price + L(linvpc,0:2), data=TS_data)
 summary(lagged_model)
 ```
 
+When users convert to time series data, the ADF and chow test functions automatically convert this to numeric form in order to proceed. If users do, for whatever reason, want to convert back from time series (to numeric class), a function has been created to allow for this:
+
+```{r}
+make_numeric(TS_data, "year")
+```
+
+However, this is discouraged because the initial data types are lost in the process of converting from time series and back to numeric. Therefore, users are encouraged to not override the initial dataset but instead use time series function to make a new time series data frame, also keeping the initial one.
 
 ## ADF test
 
@@ -162,8 +165,10 @@ An ADF can ordinarily be run without Kenometrics. However, students often find t
 #overrides the previous dataset
 #If the variable is stationary then no change is made
 #If the variable is non-stationary then the 1st difference is appended
-hseinv_data <- ADF("lpop", hseinv_data, type="type1")
+#We converted the data to time series, above, so we must add a time variable:
+hseinv_data <- ADF("lpop", hseinv_data, type="type1", time_var = "year")
 ```
 
 
 #make LRM function, use roxygen skeleton, add to README, run unit testing.
+#Stop make_numeric being annoying and printing the variables

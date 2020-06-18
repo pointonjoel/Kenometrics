@@ -3,6 +3,7 @@
 export(ADF)
 export(chow)
 export(get_data)
+export(make_numeric)
 export(make_ts)
 export(ttest)
 import(dynlm)

@@ -43,9 +43,10 @@ NASA_data <- get_data("NASA", type="excel", file_loc = my_wd)
 
 some_data <- get_data("hseinv", "txt", file_loc=my_wd)
 
-#FRED requests can also be made; simply replace the key ("ABCDE")
-#with your personal access token - see Kenometrics_Support file
-#for details
-#my_data <- get_data(name="CLVMNACSCAB1GQUK", type="FRED", key="ABCDE")
-
+\dontrun{
+FRED requests can also be made; simply replace the key ("ABCDE")
+with your personal access token - see Kenometrics_Support file
+for details
+my_data <- get_data(name="CLVMNACSCAB1GQUK", type="FRED", key="ABCDE")
+}
 }

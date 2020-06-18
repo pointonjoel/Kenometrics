@@ -58,3 +58,10 @@ test_that("Test for typo", {
   )
 })
 
+test_that("Chow test for both (intercept and slope) - no break - WITH TS DATA", {
+  TS_data <- make_ts("year", hseinv_data)
+  output1 <- chow(1960, "year", TS_data, "linvpc ~ lpop", "both")
+  expect_equal(dput(output1),
+               "The dummies are NOT jointly significant; a structural break has NOT occured"
+  )
+})

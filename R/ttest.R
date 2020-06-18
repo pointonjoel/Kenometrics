@@ -33,4 +33,4 @@ ttest <-
     return(print(paste("The t-value for ", var_name, " is ",
                        signif(tstat, digits = 4), ", and the p-value is ",
                        signif(p_value, digits = 4), ".", sep = "")))
-  } #use_github(protocol = "https", auth_token = Sys.getenv("GITHUB_PAT"))
+  }

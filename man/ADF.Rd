@@ -4,7 +4,7 @@
 \alias{ADF}
 \title{ADF Test}
 \usage{
-ADF(my_var, df, type = "type2")
+ADF(my_var, df, type = "type2", time_var)
 }
 \arguments{
 \item{my_var}{The variable to be tested, with the null hypothesis stationary
@@ -15,6 +15,11 @@ ADF(my_var, df, type = "type2")
 \item{type}{The three types are "no constant, no trend",
 "constant, no trend" and "constant, trend". The default is "type2",
 but there is also "type1" and "type3".}
+
+\item{time_var}{If the supplied data frame has previously been converted to
+time series using make_ts and/or the "zoo" package, then a time variable must
+be specified. The variable in the dataset which marks the year of the
+observations. E.g. "year"}
 }
 \value{
 The result of the ADF test, and the first difference of the variable

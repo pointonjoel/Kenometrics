@@ -32,11 +32,12 @@
 #'
 #' some_data <- get_data("hseinv", "txt", file_loc=my_wd)
 #'
-#' #FRED requests can also be made; simply replace the key ("ABCDE")
-#' #with your personal access token - see Kenometrics_Support file
-#' #for details
-#' #my_data <- get_data(name="CLVMNACSCAB1GQUK", type="FRED", key="ABCDE")
-#'
+#' \dontrun{
+#' FRED requests can also be made; simply replace the key ("ABCDE")
+#' with your personal access token - see Kenometrics_Support file
+#' for details
+#' my_data <- get_data(name="CLVMNACSCAB1GQUK", type="FRED", key="ABCDE")
+#' }
 get_data <-
   function (name, type="excel",delim="",header=TRUE,file_loc, key, ...){
     if(type=="txt"){
