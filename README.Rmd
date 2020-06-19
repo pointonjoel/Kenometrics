@@ -142,7 +142,7 @@ TS_data <- make_ts("year", hseinv_data)
 hseinv_data <- make_ts("year", hseinv_data)
 ```
 
-The user can then use the dynlm function to add lagged variables to their model. 
+The user can then use the dynlm function to add lagged variables to their model.  
 ```{r}
 library(dynlm)
 lagged_model <- dynlm(lpop ~ price + L(linvpc,0:2), data=TS_data)
