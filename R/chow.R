@@ -35,7 +35,8 @@ chow <-
 
       #converting TS data to numeric type
       if (TS==TRUE){
-        variables <- dput(names(df))
+        vars_as_list <- names(df)
+        variables <- as.vector(vars_as_list)
         numeric_data <- as.data.frame(as.numeric(df[[time_var]]))
         for (k in 1:length(df)){
           if (!variables[k]==time_var){

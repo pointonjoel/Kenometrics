@@ -19,7 +19,8 @@
 #' non_TS_data <- make_numeric(TS_data, "year")
 make_numeric <-
   function (df, time_var="year"){
-    variables <- dput(names(df))
+    vars_as_list <- names(df)
+    variables <- as.vector(vars_as_list)
     numeric_data <- as.data.frame(as.numeric(df[[time_var]]))
     for (k in 2:length(df)){
       numeric_data[[k]] <- as.numeric(df[[variables[k]]])

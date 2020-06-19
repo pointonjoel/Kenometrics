@@ -25,7 +25,8 @@ Imports:
     aTSA,
     utils,
     readr,
-    Hmisc
+    Hmisc,
+    stringr
 Suggests:
     knitr (>= 1.7),
     testthat,

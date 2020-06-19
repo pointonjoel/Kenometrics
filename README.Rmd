@@ -172,3 +172,6 @@ hseinv_data <- ADF("lpop", hseinv_data, type="type1", time_var = "year")
 
 #make LRM function, use roxygen skeleton, add to README, run unit testing.
 #Stop make_numeric being annoying and printing the variables
+#Final youtube vid
+#Finish website
+
