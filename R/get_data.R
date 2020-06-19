@@ -17,7 +17,6 @@
 #' @return The dataset as a dataframe
 #' @export
 #'
-#' @import wooldridge
 #' @import fredr
 #' @import readxl
 #' @importFrom utils read.delim data

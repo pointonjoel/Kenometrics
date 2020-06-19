@@ -38,7 +38,7 @@ chow <-
         vars_as_list <- names(df)
         variables <- as.vector(vars_as_list)
         numeric_data <- as.data.frame(as.numeric(df[[time_var]]))
-        for (k in 1:length(df)){
+        for (k in 1:length(df)){#here 1:
           if (!variables[k]==time_var){
             numeric_data[[k]] <- as.numeric(df[[k]])
           }

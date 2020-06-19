@@ -21,8 +21,8 @@ test_that("Making Time Series - year, specific. pop unchanged?", {
   )
 })
 test_that("Making Time Series - year/month, all", {
-  TS_data <- make_ts("year", ezanders_data)
-  expect_equal(class(TS_data$year), "yearmon"
+  TS_data <- make_ts(c("year", "month"), ezanders_data)
+  expect_equal(class(TS_data$year), "zoo"
   )
 })
 test_that("Making Time Series - year/month, all. luclms changed? ", {

@@ -7,14 +7,14 @@
 make_ts(time_vars, df, vars = "all")
 }
 \arguments{
-\item{df}{The dataframe which needs to be made a time series data}
-
-\item{vars}{A vector of variable names, e.g. c("pop", "inv", )}
-
-\item{time_var}{The variable in the dataset which marks the
+\item{time_vars}{The variable in the dataset which marks the
 year of the observations. E.g. "year". If there are separate year and month
 variables, use a vector with the year variable first and the month variable
 second. E.g. c("year", "month")}
+
+\item{df}{The dataframe which needs to be made a time series data}
+
+\item{vars}{A vector of variable names, e.g. c("pop", "inv", )}
 }
 \value{
 The new dataset
