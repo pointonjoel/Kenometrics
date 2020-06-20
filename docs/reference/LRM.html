@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>cran-comments.md • Kenometrics</title>
+<title>Find the LRM — LRM • Kenometrics</title>
 
 
 <!-- jquery -->
@@ -18,8 +18,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
 <!-- bootstrap-toc -->
-<link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script>
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -33,13 +33,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
 
-<meta property="og:title" content="cran-comments.md" />
+<meta property="og:title" content="Find the LRM — LRM" />
+<meta property="og:description" content="Find the long run multiplier/propensity" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -70,7 +71,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">Kenometrics</a>
+        <a class="navbar-link" href="../index.html">Kenometrics</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
@@ -78,13 +79,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -94,12 +95,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/Kenometrics_Support.html">Kenometrics Support</a>
+      <a href="../articles/Kenometrics_Support.html">Kenometrics Support</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="news/index.html">Changelog</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -120,43 +121,71 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>cran-comments.md</h1>
+    <h1>Find the LRM</h1>
+    <small class="dont-index">Source: <a href='https://github.com/pointonjoel/Kenometrics/blob/master/R/LRM.R'><code>R/LRM.R</code></a></small>
+    <div class="hidden name"><code>LRM.Rd</code></div>
     </div>
 
-<div id="cran-commentsmd" class="section level1">
+    <div class="ref-description">
+    <p>Find the long run multiplier/propensity</p>
+    </div>
 
-<p>Joel Pointon (20/06/2020)</p>
-<div id="test-environments" class="section level2">
-<h2 class="hasAnchor">
-<a href="#test-environments" class="anchor"></a>Test environments</h2>
-<ul>
-<li>local Windows 10 install, R 3.6.3</li>
-<li>Travis: Ubuntu 16.04.6 LTS R 4.0.0</li>
-<li>Travis: macOS High Sierra 10.13.6, R 4.0.1</li>
-<li>appveyor: Windows Server x64 (build 17763) x86_64-w64-mingw32/x64, R 4.0.1</li>
-</ul>
-</div>
-<div id="r-cmd-check-results" class="section level2">
-<h2 class="hasAnchor">
-<a href="#r-cmd-check-results" class="anchor"></a>R CMD check results</h2>
-<p>– R CMD check results ———————————- Kenometrics 0.1.0 —- Duration: 1m 28.8s</p>
-<p>0 errors v | 0 warnings v | 0 notes v</p>
-<p>R CMD check succeeded</p>
-</div>
-</div>
+    <pre class="usage"><span class='fu'>LRM</span>(<span class='no'>yvar</span>, <span class='no'>xvar</span>, <span class='kw'>lags</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>other_vars</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>df</span>, <span class='kw'>time_var</span> <span class='kw'>=</span> <span class='st'>"year"</span>)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>yvar</th>
+      <td><p>The regressand/dependent variable in the FDL model</p></td>
+    </tr>
+    <tr>
+      <th>xvar</th>
+      <td><p>The variable within the Finite Distributed Lag (FDL) model
+that will be the regressor. E.g. lpop</p></td>
+    </tr>
+    <tr>
+      <th>lags</th>
+      <td><p>The number of lags of the x variable</p></td>
+    </tr>
+    <tr>
+      <th>other_vars</th>
+      <td><p>variables to be included (not lagged). Input using a vector
+such as: c("lprice", "linvpc")</p></td>
+    </tr>
+    <tr>
+      <th>df</th>
+      <td><p>The dataframe which the model is based upon, e.g. my_data or NASA.</p></td>
+    </tr>
+    <tr>
+      <th>time_var</th>
+      <td><p>The variable in the dataset which marks the year of the
+observations. E.g. "year".</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>It prints the LRM its standard error and returns the LRM</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'>#Sourcing the data from the user's computer</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"fertil3.txt"</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"Kenometrics"</span>)
+<span class='no'>fertil3_data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.delim</a></span>(<span class='no'>file</span>)
+
+<span class='co'>#Using the function</span>
+<span class='no'>LR_prop</span> <span class='kw'>&lt;-</span> <span class='fu'>LRM</span>(<span class='st'>"gfr"</span>, <span class='st'>"pe"</span>, <span class='fl'>3</span>, <span class='kw'>other_vars</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"ww2"</span>, <span class='st'>"pill"</span>), <span class='kw'>df</span><span class='kw'>=</span><span class='no'>fertil3_data</span>)</div><div class='output co'>#&gt; [1] "The LRM IS: 0.1007"
+#&gt; [1] "The LRM standard error is: 0.0298"
+#&gt; [1] "The t-stat of the LRM is: 3.3795"</div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
-
 
 
       <footer>

@@ -2,9 +2,11 @@ Package: Kenometrics
 Type: Package
 Title: Support Tools For Econometrics Classes
 Version: 0.1.0
-Author: Joel Pointon
+Authors@R: person("Joel", "Pointon", email = "pointon.joel@gmail.com",
+  role = c("aut", "cre"))
 Maintainer: Joel Pointon <pointon.joel@gmail.com>
-Description: A set of functions which allow econometrics students to simply conduct important manipulations and tests, with no-nonsense errors.
+Description: A set of functions which allow econometrics students to simply 
+    conduct important manipulations and tests, with no-nonsense errors.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -20,7 +22,6 @@ Imports:
     stats,
     aTSA,
     utils,
-    readr,
     Hmisc,
     stringr
 Suggests:

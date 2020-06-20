@@ -15,7 +15,13 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-
+<!-- badges: start -->
+[![Codecov test coverage](https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badge.svg)](https://codecov.io/gh/pointonjoel/Kenometrics?branch=master)
+[![Travis build status](https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master)](https://travis-ci.com/pointonjoel/Kenometrics)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometrics?branch=master&svg=true)](https://ci.appveyor.com/project/pointonjoel/Kenometrics)
+[![R build status](https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg)](https://github.com/pointonjoel/Kenometrics/actions)
+![CI](https://github.com/pointonjoel/Kenometrics/workflows/CI/badge.svg)
+<!-- badges: end -->
 ```{r setup}
 library(Kenometrics)
 ```

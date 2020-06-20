@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Support Tools For Econometrics Classes">
-<meta property="og:description" content="A set of functions which allow econometrics students to simply conduct important manipulations and tests, with no-nonsense errors.">
+<meta property="og:description" content="A set of functions which allow econometrics students to simply 
+    conduct important manipulations and tests, with no-nonsense errors.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -90,29 +91,28 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of Kenometrics from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"Kenometrics"</span>)</pre></div>
-<p>To install the latest development version from GitHub:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"remotes"</span>)
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"pointonjoel/Kenometrics"</span>)</pre></div>
+<p>You can install the released version of Kenometrics by contacting <a href="www.joelpointon.com/contact">Joel Pointon</a>.</p>
 </div>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>The Kenometrics package enables lecturers and students to teach and implement fundemental econometric techniques. Below is a summary of the functions on offer and how they can be used:</p>
+<p>The Kenometrics package enables lecturers and students to teach and implement fundemental econometric techniques. This project has taken many hours; if you find the package useful then please consider donating using the donation bage (linked to PayPal) above. Below is a summary of the functions on offer and how they can be used:</p>
 
 <ul>
 <li>
-<p><b>get_data()</b> <i>A single function to find and source data from a variety of sources (Wooldridge, FRED, txt, Excel)</i></p>
+<p><b>get_data()</b> <i>A single function to find and source data from a variety of sources (txt, Excel)</i></p>
 </li>
 <li>
 <p><b>ttest()</b> <i>Conduct a t-test (with a specific hypothesised mean, not necessarily 0)</i></p>
 </li>
 <li>
+<p><b>chow()</b> <i>Conduct a chow test (it adds an intercept and dummy slope and tests the significance depending on if one is testing for a break in the intercept, slope or both)</i></p>
+</li>
+<li>
 <p><b>make_ts()</b> <i>Make the data time-series (to allow for lagged variables etc.)</i></p>
 </li>
 <li>
-<p><b>chow()</b> <i>Conduct a chow test (it adds an intercept and dummy slope and tests the significance depending on if one is testing for a break in the intercept, slope or both)</i></p>
+<p><b>make_numeric()</b> <i>Make the data of numeric form, to allow to conversion from zoo to numeric (reversing the make_ts function).</i></p>
 </li>
 <li>
 <p><b>ADF()</b> <i>Conduct an ADF test (and if the data are non stationary, it adds the first-difference to the data frame)</i></p>
@@ -121,306 +121,7 @@
 <p><b>LRM()</b> <i>Find and test the significance of the long run multiplier</i></p>
 </li>
 </ul>
-<p>The Kenometrics package takes many existing packages and incorporates them as dependencies, simplifying the existing functions they provide. Dependencies include, but are not limited to: wooldridge, zoo, dynlm, fredr, readxl and tseries. Having all of these bundled into one package and harnessed for econometrics means that students can quickly begin putting theory into practice. Without Kenometrics, testing for non-stationary data, for example, can be long-winded and and require multiple packages. However, Kenometrics similifies the code into one line and includes all other necessary packages. Although, students are encouraged to look into the code, which is written in a simple and intuitive way, to see how they could complete the data manipulations without Kenometrics.</p>
-</div>
-<div id="importing-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#importing-data" class="anchor"></a>Importing data</h2>
-<p>When importing data, students may often be overwhelmed with the specifics needed when importing from a variety of sources. The having one function complete with FRED and Excel integration simplies things further.</p>
-<p>To import data to the current environment, there are two ways depending on the type of data. It is reccomended that users also import the <a href="https://cran.r-project.org/web/packages/wooldridge/index.html">wooldridge package</a>, which contains all of the <a href="https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9781111531041">datasets used in the textbook’s examples</a>:</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">Kenometrics</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">wooldridge</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">hseinv</span>)
-<span class="co">#Then the dataset can be previewed (and manipulated)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">hseinv</span>)
-<span class="co">#&gt;   year   inv    pop  price     linv     lpop     lprice t     invpc     linvpc</span>
-<span class="co">#&gt; 1 1947 54864 144126 0.8190 10.91261 11.87844 -0.1996712 1 0.3806669 -0.9658305</span>
-<span class="co">#&gt; 2 1948 64717 146631 0.8649 11.07778 11.89567 -0.1451414 2 0.4413596 -0.8178953</span>
-<span class="co">#&gt; 3 1949 63150 149188 0.8456 11.05327 11.91296 -0.1677088 3 0.4232914 -0.8596944</span>
-<span class="co">#&gt; 4 1950 86014 151684 0.8765 11.36227 11.92955 -0.1318186 4 0.5670605 -0.5672894</span>
-<span class="co">#&gt; 5 1951 70610 154287 0.8819 11.16493 11.94657 -0.1256766 5 0.4576536 -0.7816427</span>
-<span class="co">#&gt; 6 1952 68574 156954 0.8842 11.13567 11.96371 -0.1230720 6 0.4369051 -0.8280393</span>
-<span class="co">#&gt;     lprice_1   linvpc_1       gprice      ginvpc</span>
-<span class="co">#&gt; 1         NA         NA           NA          NA</span>
-<span class="co">#&gt; 2 -0.1996712 -0.9658305  0.054529801  0.14793521</span>
-<span class="co">#&gt; 3 -0.1451414 -0.8178953 -0.022567436 -0.04179913</span>
-<span class="co">#&gt; 4 -0.1677088 -0.8596944  0.035890266  0.29240507</span>
-<span class="co">#&gt; 5 -0.1318186 -0.5672894  0.006141976 -0.21435338</span>
-<span class="co">#&gt; 6 -0.1256766 -0.7816427  0.002604567 -0.04639655</span></pre></div>
-<p>Kenometrics provides support for a variety of other types of datasets. Simply specify the name of the file/dataset and the type of data.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="co">#Code needed to obtain the NASA file on the user's computer</span>
-<span class="no">file</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"NASA.xlsx"</span>, <span class="kw">package</span><span class="kw">=</span><span class="st">"Kenometrics"</span>)
-<span class="no">my_wd</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span>(<span class="no">file</span>,<span class="fl">0</span>,<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="no">file</span>)-<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="st">"NASA.xlsx"</span>)-<span class="fl">1</span>)
-
-<span class="co">#Once the working directory has been obtained, the get_data function can be used</span>
-<span class="no">NASA_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_data.html">get_data</a></span>(<span class="st">"NASA"</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">"excel"</span>, <span class="kw">file_loc</span> <span class="kw">=</span> <span class="no">my_wd</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">NASA_data</span>)
-<span class="co">#&gt; # A tibble: 140 x 3</span>
-<span class="co">#&gt;     Year No_Smoothing Lowess</span>
-<span class="co">#&gt;    &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  1880        -0.16  -0.09</span>
-<span class="co">#&gt;  2  1881        -0.08  -0.12</span>
-<span class="co">#&gt;  3  1882        -0.1   -0.16</span>
-<span class="co">#&gt;  4  1883        -0.17  -0.2 </span>
-<span class="co">#&gt;  5  1884        -0.28  -0.23</span>
-<span class="co">#&gt;  6  1885        -0.32  -0.25</span>
-<span class="co">#&gt;  7  1886        -0.3   -0.26</span>
-<span class="co">#&gt;  8  1887        -0.35  -0.26</span>
-<span class="co">#&gt;  9  1888        -0.16  -0.26</span>
-<span class="co">#&gt; 10  1889        -0.1   -0.25</span>
-<span class="co">#&gt; # ... with 130 more rows</span></pre></div>
-<p>Whilst the function defaults the working directory to the current location of the workspace, students are encouraged to set a working directory prior to sourcing data. This can be done by using:</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="no">my_wd</span><span class="kw">=</span><span class="st">"C:/Documents"</span>
-<span class="co">#And then for usage:</span>
-<span class="co">#setwd(my_wd)</span></pre></div>
-<p>Note the use of “/” rather than "", as is customary in R.</p>
-<p>Students can also import files from FRED using Kenometrics, once they have obtained a <a href="https://research.stlouisfed.org/docs/api/api_key.html">FRED API key</a>, which is simple and free. For examples, see:</p>
-<div class="sourceCode" id="cb6"><pre class="r">#?get_data</pre></div>
-</div>
-<div id="t-tests" class="section level2">
-<h2 class="hasAnchor">
-<a href="#t-tests" class="anchor"></a>T-tests</h2>
-<p>Once data has been imported, a t-test can then be conducted. Ordinarily, this is possible through the completing a linear regression and finding the summary of it.</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="no">simple_model</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">lprice</span> ~ <span class="no">lpop</span> + <span class="no">linvpc</span> , <span class="kw">data</span><span class="kw">=</span><span class="no">hseinv</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">simple_model</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Call:</span>
-<span class="co">#&gt; lm(formula = lprice ~ lpop + linvpc, data = hseinv)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residuals:</span>
-<span class="co">#&gt;       Min        1Q    Median        3Q       Max </span>
-<span class="co">#&gt; -0.054007 -0.030110 -0.000722  0.016743  0.084962 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Coefficients:</span>
-<span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="co">#&gt; (Intercept) -4.068122   0.566440  -7.182 1.21e-08 ***</span>
-<span class="co">#&gt; lpop         0.326166   0.045171   7.221 1.07e-08 ***</span>
-<span class="co">#&gt; linvpc      -0.002631   0.041633  -0.063     0.95    </span>
-<span class="co">#&gt; ---</span>
-<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residual standard error: 0.03788 on 39 degrees of freedom</span>
-<span class="co">#&gt; Multiple R-squared:  0.6613, Adjusted R-squared:  0.6439 </span>
-<span class="co">#&gt; F-statistic: 38.07 on 2 and 39 DF,  p-value: 6.8e-10</span></pre></div>
-<p>However, this assumes that the hypothesised population mean is 0; there is no scope to change it. To conduct a T-Test where there is a non-0 population mean is simple with Kenometrics:</p>
-<div class="sourceCode" id="cb8"><pre class="r">#t_stat &lt;- ttest("linvpc", some_data, "simple_model", pop_mean = -1)
-#print(t_stat)</pre></div>
-</div>
-<div id="chow-tests" class="section level2">
-<h2 class="hasAnchor">
-<a href="#chow-tests" class="anchor"></a>Chow tests</h2>
-<p>With Kenometrics, a Chow test can easily be conducted. The fucntion works by adding both an intercept and a slope dummy, allowing the user to select whether the test is for the intercept, slope, or both.</p>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="fu"><a href="reference/chow.html">chow</a></span>(<span class="fl">1960</span>, <span class="st">"year"</span>, <span class="no">hseinv</span>, <span class="st">"linvpc ~ lpop"</span>, <span class="st">"both"</span>)
-<span class="co">#&gt; linvpc ~ lpop + D + Dx</span>
-<span class="co">#&gt; &lt;environment: 0x0000000011995d30&gt;</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Time series regression with "numeric" data:</span>
-<span class="co">#&gt; Start = 1, End = 42</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Call:</span>
-<span class="co">#&gt; dynlm(formula = new_model, data = df)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residuals:</span>
-<span class="co">#&gt;      Min       1Q   Median       3Q      Max </span>
-<span class="co">#&gt; -0.46825 -0.06333 -0.00423  0.08076  0.28312 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Coefficients:</span>
-<span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)</span>
-<span class="co">#&gt; (Intercept) -6.450571   7.424640  -0.869    0.390</span>
-<span class="co">#&gt; lpop         0.473727   0.619662   0.764    0.449</span>
-<span class="co">#&gt; D           -8.519577  14.453617  -0.589    0.559</span>
-<span class="co">#&gt; Dx           0.004326   0.007403   0.584    0.562</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residual standard error: 0.1457 on 38 degrees of freedom</span>
-<span class="co">#&gt; Multiple R-squared:  0.339,  Adjusted R-squared:  0.2868 </span>
-<span class="co">#&gt; F-statistic: 6.495 on 3 and 38 DF,  p-value: 0.001173</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; [1] "The dummies are NOT jointly significant; a structural break has NOT occured"</span></pre></div>
-</div>
-<div id="making-data-time-series" class="section level2">
-<h2 class="hasAnchor">
-<a href="#making-data-time-series" class="anchor"></a>Making data time series</h2>
-<p>In order to add lagged variables to regressions, the data needs to be declared time series. This can be done easily, with the ability to override the old data frame or make a new one:</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="co">#Code needed to obtain the data file on the user's computer</span>
-<span class="no">file</span> <span class="kw">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"NASA.xlsx"</span>, <span class="kw">package</span><span class="kw">=</span><span class="st">"Kenometrics"</span>)
-<span class="no">my_wd</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span>(<span class="no">file</span>,<span class="fl">0</span>,<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="no">file</span>)-<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="st">"NASA.xlsx"</span>)-<span class="fl">1</span>)
-<span class="no">hseinv_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_data.html">get_data</a></span>(<span class="st">"hseinv"</span>, <span class="st">"txt"</span>, <span class="kw">file_loc</span><span class="kw">=</span><span class="no">my_wd</span>)
-
-<span class="co">#Using the function to make a new data set that is time series</span>
-<span class="no">TS_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/make_ts.html">make_ts</a></span>(<span class="st">"year"</span>, <span class="no">hseinv_data</span>)
-
-<span class="co">#Using the function to override the old data with time series data</span>
-<span class="co">#Note that this is strongly discouraged, see below.</span>
-<span class="no">hseinv_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/make_ts.html">make_ts</a></span>(<span class="st">"year"</span>, <span class="no">hseinv_data</span>)</pre></div>
-<p>The user can then use the dynlm function to add lagged variables to their model.</p>
-<div class="sourceCode" id="cb11"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dynlm</span>)
-<span class="co">#&gt; Loading required package: zoo</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'zoo'</span>
-<span class="co">#&gt; The following objects are masked from 'package:base':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     as.Date, as.Date.numeric</span>
-<span class="no">lagged_model</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dynlm/man/dynlm.html">dynlm</a></span>(<span class="no">lpop</span> ~ <span class="no">price</span> + <span class="fu">L</span>(<span class="no">linvpc</span>,<span class="fl">0</span>:<span class="fl">2</span>), <span class="kw">data</span><span class="kw">=</span><span class="no">TS_data</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">lagged_model</span>)
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Time series regression with "zoo" data:</span>
-<span class="co">#&gt; Start = Jan 1949, End = Jan 1988</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Call:</span>
-<span class="co">#&gt; dynlm(formula = lpop ~ price + L(linvpc, 0:2), data = TS_data)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residuals:</span>
-<span class="co">#&gt;      Min       1Q   Median       3Q      Max </span>
-<span class="co">#&gt; -0.22169 -0.07194  0.02768  0.05565  0.11692 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Coefficients:</span>
-<span class="co">#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="co">#&gt; (Intercept)      10.9222     0.3271  33.389  &lt; 2e-16 ***</span>
-<span class="co">#&gt; price             1.6264     0.2927   5.557 2.97e-06 ***</span>
-<span class="co">#&gt; L(linvpc, 0:2)0   0.2612     0.1123   2.326   0.0259 *  </span>
-<span class="co">#&gt; L(linvpc, 0:2)1  -0.1121     0.1384  -0.810   0.4234    </span>
-<span class="co">#&gt; L(linvpc, 0:2)2   0.1769     0.1174   1.508   0.1407    </span>
-<span class="co">#&gt; ---</span>
-<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Residual standard error: 0.086 on 35 degrees of freedom</span>
-<span class="co">#&gt; Multiple R-squared:  0.6974, Adjusted R-squared:  0.6629 </span>
-<span class="co">#&gt; F-statistic: 20.17 on 4 and 35 DF,  p-value: 1.084e-08</span></pre></div>
-<p>When users convert to time series data, the ADF and chow test functions automatically convert this to numeric form in order to proceed. If users do, for whatever reason, want to convert back from time series (to numeric class), a function has been created to allow for this:</p>
-<div class="sourceCode" id="cb12"><pre class="r"><span class="fu"><a href="reference/make_numeric.html">make_numeric</a></span>(<span class="no">TS_data</span>, <span class="st">"year"</span>)
-<span class="co">#&gt; c("year", "inv", "pop", "price", "linv", "lpop", "lprice", "t", </span>
-<span class="co">#&gt; "invpc", "linvpc", "lprice_1", "linvpc_1", "gprice", "ginvpc"</span>
-<span class="co">#&gt; )</span>
-<span class="co">#&gt;    year    inv    pop  price     linv     lpop     lprice  t     invpc</span>
-<span class="co">#&gt; 1  1947  54864 144126 0.8190 10.91261 11.87844 -0.1996712  1 0.3806669</span>
-<span class="co">#&gt; 2  1948  64717 146631 0.8649 11.07778 11.89567 -0.1451414  2 0.4413596</span>
-<span class="co">#&gt; 3  1949  63150 149188 0.8456 11.05327 11.91296 -0.1677088  3 0.4232914</span>
-<span class="co">#&gt; 4  1950  86014 151684 0.8765 11.36227 11.92955 -0.1318186  4 0.5670605</span>
-<span class="co">#&gt; 5  1951  70610 154287 0.8819 11.16493 11.94657 -0.1256766  5 0.4576536</span>
-<span class="co">#&gt; 6  1952  68574 156954 0.8842 11.13567 11.96371 -0.1230720  6 0.4369051</span>
-<span class="co">#&gt; 7  1953  70818 159565 0.8868 11.16787 11.98021 -0.1201358  7 0.4438191</span>
-<span class="co">#&gt; 8  1954  78460 162391 0.8597 11.27034 11.99776 -0.1511718  8 0.4831549</span>
-<span class="co">#&gt; 9  1955  91204 165275 0.8708 11.42085 12.01537 -0.1383429  9 0.5518318</span>
-<span class="co">#&gt; 10 1956  80383 168221 0.8829 11.29456 12.03303 -0.1245433 10 0.4778416</span>
-<span class="co">#&gt; 11 1957  74040 171274 0.8722 11.21236 12.05102 -0.1367365 11 0.4322898</span>
-<span class="co">#&gt; 12 1958  74822 174141 0.8521 11.22287 12.06762 -0.1600514 12 0.4296633</span>
-<span class="co">#&gt; 13 1959  88936 177830 0.8647 11.39567 12.08858 -0.1453726 13 0.5001181</span>
-<span class="co">#&gt; 14 1960  83127 180671 0.8620 11.32813 12.10443 -0.1485000 14 0.4601015</span>
-<span class="co">#&gt; 15 1961  83207 183691 0.8553 11.32909 12.12101 -0.1563030 15 0.4529727</span>
-<span class="co">#&gt; 16 1962  89121 186538 0.8593 11.39775 12.13639 -0.1516372 16 0.4777632</span>
-<span class="co">#&gt; 17 1963  96778 189242 0.8656 11.48018 12.15078 -0.1443324 17 0.5113981</span>
-<span class="co">#&gt; 18 1964  94306 191889 0.8795 11.45430 12.16467 -0.1284017 18 0.4914612</span>
-<span class="co">#&gt; 19 1965 100103 194303 0.8774 11.51396 12.17717 -0.1307923 19 0.5151902</span>
-<span class="co">#&gt; 20 1966  92145 196560 0.8783 11.43112 12.18872 -0.1297670 20 0.4687881</span>
-<span class="co">#&gt; 21 1967  91336 198712 0.8919 11.42230 12.19961 -0.1144013 21 0.4596401</span>
-<span class="co">#&gt; 22 1968  99617 200706 0.9036 11.50909 12.20960 -0.1013685 22 0.4963329</span>
-<span class="co">#&gt; 23 1969 102183 202677 0.9152 11.53452 12.21937 -0.0886127 23 0.5041667</span>
-<span class="co">#&gt; 24 1970  96855 205052 0.8823 11.48097 12.23102 -0.1252231 24 0.4723436</span>
-<span class="co">#&gt; 25 1971 124309 207191 0.8798 11.73053 12.24140 -0.1280606 25 0.5999730</span>
-<span class="co">#&gt; 26 1972 147269 209353 0.8874 11.90002 12.25178 -0.1194595 26 0.7034482</span>
-<span class="co">#&gt; 27 1973 145286 211536 0.9057 11.88646 12.26215 -0.0990471 27 0.6868145</span>
-<span class="co">#&gt; 28 1974 112349 213743 0.9232 11.62936 12.27253 -0.0799094 28 0.5256266</span>
-<span class="co">#&gt; 29 1975  95170 215973 0.9147 11.46342 12.28291 -0.0891592 29 0.4406569</span>
-<span class="co">#&gt; 30 1976 117727 218280 0.9199 11.67612 12.29353 -0.0834903 30 0.5393394</span>
-<span class="co">#&gt; 31 1977 142412 220612 0.9604 11.86648 12.30416 -0.0404054 31 0.6455315</span>
-<span class="co">#&gt; 32 1978 151261 222968 1.0061 11.92676 12.31478  0.0060815 32 0.6783978</span>
-<span class="co">#&gt; 33 1979 143049 225350 1.0356 11.87094 12.32541  0.0349809 33 0.6347859</span>
-<span class="co">#&gt; 34 1980 112310 227757 1.0432 11.62902 12.33603  0.0422929 34 0.4931133</span>
-<span class="co">#&gt; 35 1981 102714 230139 1.0282 11.53970 12.34644  0.0278097 35 0.4463129</span>
-<span class="co">#&gt; 36 1982  84676 232520 1.0000 11.34659 12.35673  0.0000000 36 0.3641665</span>
-<span class="co">#&gt; 37 1983 122819 234799 0.9836 11.71847 12.36648 -0.0165359 37 0.5230814</span>
-<span class="co">#&gt; 38 1984 145166 237001 0.9836 11.88563 12.37582 -0.0165359 38 0.6125122</span>
-<span class="co">#&gt; 39 1985 146311 239279 0.9760 11.89349 12.38539 -0.0242927 39 0.6114661</span>
-<span class="co">#&gt; 40 1986 168406 241625 0.9760 12.03413 12.39514 -0.0242927 40 0.6969726</span>
-<span class="co">#&gt; 41 1987 167459 243934 0.9892 12.02849 12.40465 -0.0108587 41 0.6864930</span>
-<span class="co">#&gt; 42 1988 165459 246329 0.9864 12.01648 12.41442 -0.0136933 42 0.6716992</span>
-<span class="co">#&gt;        linvpc lprice_1 linvpc_1 gprice ginvpc</span>
-<span class="co">#&gt; 1  -0.9658305       35       42     16     23</span>
-<span class="co">#&gt; 2  -0.8178953       34       40     41     34</span>
-<span class="co">#&gt; 3  -0.8596944       26       34     11      9</span>
-<span class="co">#&gt; 4  -0.5672894       33       39     38     41</span>
-<span class="co">#&gt; 5  -0.7816427       22       11     23     20</span>
-<span class="co">#&gt; 6  -0.8280393       17       30     19     10</span>
-<span class="co">#&gt; 7  -0.8123382       14       36     20     25</span>
-<span class="co">#&gt; 8  -0.7274181       13       33     14     31</span>
-<span class="co">#&gt; 9  -0.5945120       29       23     28     33</span>
-<span class="co">#&gt; 10 -0.7384759       24       12     31     17</span>
-<span class="co">#&gt; 11 -0.8386591       15       24      8     16</span>
-<span class="co">#&gt; 12 -0.8447533       23       37     12      2</span>
-<span class="co">#&gt; 13 -0.6929110       32       38     32     35</span>
-<span class="co">#&gt; 14 -0.7763081       27       19      4     13</span>
-<span class="co">#&gt; 15 -0.7919235       28       28      6      4</span>
-<span class="co">#&gt; 16 -0.7386400       31       31     21     28</span>
-<span class="co">#&gt; 17 -0.6706070       30       25     24     29</span>
-<span class="co">#&gt; 18 -0.7103723       25       17     34      8</span>
-<span class="co">#&gt; 19 -0.6632192       19       22      1     26</span>
-<span class="co">#&gt; 20 -0.7576043       21       16     18     14</span>
-<span class="co">#&gt; 21 -0.7773115       20       27     33      5</span>
-<span class="co">#&gt; 22 -0.7005083       11       29     29     30</span>
-<span class="co">#&gt; 23 -0.6848482       10       20     27     24</span>
-<span class="co">#&gt; 24 -0.7500486        7       18     15     11</span>
-<span class="co">#&gt; 25 -0.5108707       16       26      3     40</span>
-<span class="co">#&gt; 26 -0.3517610       18       10     26     37</span>
-<span class="co">#&gt; 27 -0.3756910       12        1     36      7</span>
-<span class="co">#&gt; 28 -0.6431642        9        3     35     22</span>
-<span class="co">#&gt; 29 -0.8194886        5       14      7     18</span>
-<span class="co">#&gt; 30 -0.6174103        8       35     22     39</span>
-<span class="co">#&gt; 31 -0.4376812        6       13     39     38</span>
-<span class="co">#&gt; 32 -0.3880215        4        6     40     27</span>
-<span class="co">#&gt; 33 -0.4544675       37        5     37     12</span>
-<span class="co">#&gt; 34 -0.7070163       39        7     25     21</span>
-<span class="co">#&gt; 35 -0.8067350       40       21      9     15</span>
-<span class="co">#&gt; 36 -1.0101440       38       32     13     19</span>
-<span class="co">#&gt; 37 -0.6480181       36       41     10     42</span>
-<span class="co">#&gt; 38 -0.4901865        2       15     17     36</span>
-<span class="co">#&gt; 39 -0.4918957        2        8      5      1</span>
-<span class="co">#&gt; 40 -0.3610092        3        9     17     32</span>
-<span class="co">#&gt; 41 -0.3761592        3        2     30      3</span>
-<span class="co">#&gt; 42 -0.3979446        1        4      2      6</span></pre></div>
-<p>However, this is discouraged because the initial data types are lost in the process of converting from time series and back to numeric. Therefore, users are encouraged to not override the initial dataset but instead use time series function to make a new time series data frame, also keeping the initial one.</p>
-</div>
-<div id="adf-test" class="section level2">
-<h2 class="hasAnchor">
-<a href="#adf-test" class="anchor"></a>ADF test</h2>
-<p>An ADF can ordinarily be run without Kenometrics. However, students often find the results confusing and difficult to understand. Kenometrics selects an appropriate test (defaulting to “constant, no trend”) for students automatically, yet leaving the option for users to select their own. Additionally, if the variable is found to be non-stationary, the function calculates the 1st difference and returns the original dataset with a the 1st difference appended. This allows students to then run regressions knowing that all variables are stationary.</p>
-<div class="sourceCode" id="cb13"><pre class="r"><span class="co">#overrides the previous dataset</span>
-<span class="co">#If the variable is stationary then no change is made</span>
-<span class="co">#If the variable is non-stationary then the 1st difference is appended</span>
-<span class="co">#We converted the data to time series, above, so we must add a time variable:</span>
-<span class="no">hseinv_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/ADF.html">ADF</a></span>(<span class="st">"lpop"</span>, <span class="no">hseinv_data</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">"type1"</span>, <span class="kw">time_var</span> <span class="kw">=</span> <span class="st">"year"</span>)
-<span class="co">#&gt; c("year", "inv", "pop", "price", "linv", "lpop", "lprice", "t", </span>
-<span class="co">#&gt; "invpc", "linvpc", "lprice_1", "linvpc_1", "gprice", "ginvpc"</span>
-<span class="co">#&gt; )</span>
-<span class="co">#&gt; Augmented Dickey-Fuller Test </span>
-<span class="co">#&gt; alternative: stationary </span>
-<span class="co">#&gt;  </span>
-<span class="co">#&gt; Type 1: no drift no trend </span>
-<span class="co">#&gt;      lag    ADF p.value</span>
-<span class="co">#&gt; [1,]   0 23.499   0.990</span>
-<span class="co">#&gt; [2,]   1  0.955   0.905</span>
-<span class="co">#&gt; [3,]   2  0.384   0.748</span>
-<span class="co">#&gt; [4,]   3  0.351   0.739</span>
-<span class="co">#&gt; Type 2: with drift no trend </span>
-<span class="co">#&gt;      lag    ADF p.value</span>
-<span class="co">#&gt; [1,]   0 -12.64  0.0100</span>
-<span class="co">#&gt; [2,]   1  -2.64  0.0963</span>
-<span class="co">#&gt; [3,]   2  -1.66  0.4580</span>
-<span class="co">#&gt; [4,]   3  -1.80  0.4032</span>
-<span class="co">#&gt; Type 3: with drift and trend </span>
-<span class="co">#&gt;      lag   ADF p.value</span>
-<span class="co">#&gt; [1,]   0 -1.98   0.570</span>
-<span class="co">#&gt; [2,]   1 -1.95   0.583</span>
-<span class="co">#&gt; [3,]   2 -2.66   0.308</span>
-<span class="co">#&gt; [4,]   3 -3.06   0.154</span>
-<span class="co">#&gt; ---- </span>
-<span class="co">#&gt; Note: in fact, p.value = 0.01 means p.value &lt;= 0.01 </span>
-<span class="co">#&gt; [1] "beta 1  is significant"</span>
-<span class="co">#&gt; [1] "lpop is not stationary"</span>
-<span class="co">#&gt; [1] "beta 2  is significant"</span>
-<span class="co">#&gt; [1] "beta 3  is significant"</span>
-<span class="co">#&gt; [1] "beta 4  is significant"</span>
-<span class="co">#&gt; [1] "The 1st difference has been appended to the data frame"</span></pre></div>
-<p>#make LRM function, use roxygen skeleton, add to README, run unit testing. #Stop make_numeric being annoying and printing the variables</p>
+<p>The Kenometrics package takes many existing packages and incorporates them as dependencies, simplifying the existing functions they provide. Dependencies include, but are not limited to: wooldridge, zoo, dynlm, readxl and tseries. Having all of these bundled into one package and harnessed for econometrics means that students can quickly begin putting theory into practice. Without Kenometrics, testing for non-stationary data, for example, can be long-winded and and require multiple packages. However, Kenometrics similifies the code into one line and includes all other necessary packages. Although, students are encouraged to look into the code, which is written in a simple and intuitive way, to see how they could complete the data manipulations without Kenometrics.</p>
 </div>
 </div>
   </div>
@@ -444,7 +145,7 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Joel Pointon <br><small class="roles"> Maintainer </small>  </li>
+<li>Joel Pointon <br><small class="roles"> Author, maintainer </small>  </li>
 </ul>
 </div>
 
@@ -452,6 +153,9 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://codecov.io/gh/pointonjoel/Kenometrics?branch=master"><img src="https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://travis-ci.com/pointonjoel/Kenometrics"><img src="https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master" alt="Travis build status"></a></li>
+<li><a href="https://ci.appveyor.com/project/pointonjoel/Kenometrics"><img src="https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometrics?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://github.com/pointonjoel/Kenometrics/actions"><img src="https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
 </div>

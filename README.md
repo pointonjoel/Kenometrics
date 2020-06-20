@@ -14,7 +14,6 @@ status](https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometri
 [![R build
 status](https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg)](https://github.com/pointonjoel/Kenometrics/actions)
 ![CI](https://github.com/pointonjoel/Kenometrics/workflows/CI/badge.svg)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DXBJF8MEJ3GT2&source=url)
 <!-- badges: end -->
 
 The goal of Kenometrics is to provide a set of functions which allow
@@ -23,25 +22,16 @@ tests.
 
 ## Installation
 
-You can install the released version of Kenometrics from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("Kenometrics")
-```
-
-To install the latest development version from GitHub:
-
-``` r
-install.packages("devtools")
-devtools::install_github("pointonjoel/Kenometrics")
-```
+You can install the released version of Kenometrics by contacting [Joel
+Pointon](www.joelpointon.com/contact).
 
 ## Overview
 
 The Kenometrics package enables lecturers and students to teach and
-implement fundemental econometric techniques. Below is a summary of the
-functions on offer and how they can be used:
+implement fundemental econometric techniques. This project has taken
+many hours; if you find the package useful then please consider donating
+using the donation bage (linked to PayPal) above. Below is a summary of
+the functions on offer and how they can be used:
 
 <body>
 

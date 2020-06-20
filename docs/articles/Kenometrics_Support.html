@@ -85,7 +85,7 @@
       <h1 data-toc-skip>Kenometrics Support</h1>
                         <h4 class="author">Joel Pointon</h4>
             
-            <h4 class="date">2020-06-18</h4>
+            <h4 class="date">2020-06-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pointonjoel/Kenometrics/blob/master/vignettes/Kenometrics_Support.Rmd"><code>vignettes/Kenometrics_Support.Rmd</code></a></small>
       <div class="hidden name"><code>Kenometrics_Support.Rmd</code></div>
@@ -94,12 +94,221 @@
 
     
     
+<!-- badges: start -->
+<p><a href="https://codecov.io/gh/pointonjoel/Kenometrics?branch=master"><img src="https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://travis-ci.com/pointonjoel/Kenometrics"><img src="https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master" alt="Travis build status"></a> <a href="https://ci.appveyor.com/project/pointonjoel/Kenometrics"><img src="https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometrics?branch=master&amp;svg=true" alt="AppVeyor build status"></a> <a href="https://github.com/pointonjoel/Kenometrics/actions"><img src="https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <img src="https://github.com/pointonjoel/Kenometrics/workflows/CI/badge.svg" alt="CI"><!-- badges: end --></p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">Kenometrics</span>)</pre></body></html></div>
+<div id="importing-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#importing-data" class="anchor"></a>Importing data</h2>
+<p>When importing data, students may often be overwhelmed with the specifics needed when importing from a variety of sources. Having one function with txt and Excel integration simplies things further.</p>
+<p>To import data to the current environment, there are two ways depending on the type of data. It is reccomended that users also import the <a href="https://cran.r-project.org/web/packages/wooldridge/index.html">wooldridge package</a>, which contains all of the <a href="https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9781111531041">datasets used in the textbook’s examples</a>.</p>
+<p>Kenometrics provides support for a variety of other types of datasets. Simply specify the name of the file/dataset and the type of data.</p>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co">#Code needed to obtain the NASA file on the user's computer</span>
+<span class="no">file</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"NASA.xlsx"</span>, <span class="kw">package</span><span class="kw">=</span><span class="st">"Kenometrics"</span>)
+<span class="no">my_wd</span> <span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span>(<span class="no">file</span>,<span class="fl">0</span>,<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="no">file</span>)-<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="st">"NASA.xlsx"</span>)-<span class="fl">1</span>)
+
+<span class="co">#Once the working directory has been obtained, the get_data function can be used</span>
+<span class="no">NASA_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span>(<span class="st">"NASA"</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">"excel"</span>, <span class="kw">file_loc</span> <span class="kw">=</span> <span class="no">my_wd</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">NASA_data</span>)
+<span class="co">#&gt; # A tibble: 140 x 3</span>
+<span class="co">#&gt;     Year No_Smoothing Lowess</span>
+<span class="co">#&gt;    &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  1880        -0.16  -0.09</span>
+<span class="co">#&gt;  2  1881        -0.08  -0.12</span>
+<span class="co">#&gt;  3  1882        -0.1   -0.16</span>
+<span class="co">#&gt;  4  1883        -0.17  -0.2 </span>
+<span class="co">#&gt;  5  1884        -0.28  -0.23</span>
+<span class="co">#&gt;  6  1885        -0.32  -0.25</span>
+<span class="co">#&gt;  7  1886        -0.3   -0.26</span>
+<span class="co">#&gt;  8  1887        -0.35  -0.26</span>
+<span class="co">#&gt;  9  1888        -0.16  -0.26</span>
+<span class="co">#&gt; 10  1889        -0.1   -0.25</span>
+<span class="co">#&gt; # ... with 130 more rows</span></pre></body></html></div>
+<p>Whilst the function defaults the working directory to the current location of the workspace, students are encouraged to set a working directory prior to sourcing data. This can be done by using:</p>
+<div class="sourceCode" id="cb3"><html><body><pre class="r">#my_wd="C:/Documents"
+#And then for usage:
+#setwd(my_wd)</pre></body></html></div>
+<p>Note the use of “/” rather than "", as is customary in R.</p>
+</div>
+<div id="t-tests" class="section level2">
+<h2 class="hasAnchor">
+<a href="#t-tests" class="anchor"></a>T-tests</h2>
+<p>Once data has been imported, a t-test can then be conducted. Ordinarily, this is possible through the completing a linear regression and finding the summary of it.</p>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">hseinv_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span>(<span class="st">"hseinv"</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">"txt"</span>, <span class="kw">file_loc</span> <span class="kw">=</span> <span class="no">my_wd</span>)
+<span class="no">simple_model</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">lprice</span> ~ <span class="no">lpop</span> + <span class="no">linvpc</span> , <span class="kw">data</span><span class="kw">=</span><span class="no">hseinv_data</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">simple_model</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; lm(formula = lprice ~ lpop + linvpc, data = hseinv_data)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;       Min        1Q    Median        3Q       Max </span>
+<span class="co">#&gt; -0.054009 -0.030110 -0.000722  0.016744  0.084964 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="co">#&gt; (Intercept) -4.06811    0.56644  -7.182 1.21e-08 ***</span>
+<span class="co">#&gt; lpop         0.32616    0.04517   7.221 1.07e-08 ***</span>
+<span class="co">#&gt; linvpc      -0.00263    0.04163  -0.063     0.95    </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 0.03788 on 39 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.6613, Adjusted R-squared:  0.6439 </span>
+<span class="co">#&gt; F-statistic: 38.07 on 2 and 39 DF,  p-value: 6.801e-10</span></pre></body></html></div>
+<p>However, this assumes that the hypothesised population mean is 0; there is no scope to change it. To conduct a T-Test where there is a non-0 population mean is simple with Kenometrics:</p>
+<div class="sourceCode" id="cb5"><html><body><pre class="r">#t_stat &lt;- ttest("linvpc", some_data, "simple_model", pop_mean = -1)
+#print(t_stat)</pre></body></html></div>
+</div>
+<div id="chow-tests" class="section level2">
+<h2 class="hasAnchor">
+<a href="#chow-tests" class="anchor"></a>Chow tests</h2>
+<p>With Kenometrics, a Chow test can easily be conducted. The fucntion works by adding both an intercept and a slope dummy, allowing the user to select whether the test is for the intercept, slope, or both.</p>
+<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/chow.html">chow</a></span>(<span class="fl">1960</span>, <span class="st">"year"</span>, <span class="no">hseinv_data</span>, <span class="st">"linvpc ~ lpop"</span>, <span class="st">"both"</span>)
+<span class="co">#&gt; linvpc ~ lpop + D + Dx</span>
+<span class="co">#&gt; &lt;environment: 0x00000000143b7860&gt;</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Time series regression with "numeric" data:</span>
+<span class="co">#&gt; Start = 1, End = 42</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; dynlm::dynlm(formula = new_model, data = df)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;      Min       1Q   Median       3Q      Max </span>
+<span class="co">#&gt; -0.46825 -0.06333 -0.00423  0.08076  0.28312 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)</span>
+<span class="co">#&gt; (Intercept) -6.450623   7.424541  -0.869    0.390</span>
+<span class="co">#&gt; lpop         0.473731   0.619654   0.765    0.449</span>
+<span class="co">#&gt; D           -8.519504  14.453440  -0.589    0.559</span>
+<span class="co">#&gt; Dx           0.004326   0.007403   0.584    0.562</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 0.1457 on 38 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.339,  Adjusted R-squared:  0.2868 </span>
+<span class="co">#&gt; F-statistic: 6.495 on 3 and 38 DF,  p-value: 0.001173</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; [1] "The dummies are NOT jointly significant; a structural break has NOT occured"</span></pre></body></html></div>
+</div>
+<div id="making-data-time-series" class="section level2">
+<h2 class="hasAnchor">
+<a href="#making-data-time-series" class="anchor"></a>Making data time series</h2>
+<p>In order to add lagged variables to regressions, the data needs to be declared time series. This can be done easily, with the ability to override the old data frame or make a new one:</p>
+<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="co">#Code needed to obtain the data file on the user's computer</span>
+<span class="no">file</span> <span class="kw">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"NASA.xlsx"</span>, <span class="kw">package</span><span class="kw">=</span><span class="st">"Kenometrics"</span>)
+<span class="no">my_wd</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/substr.html">substr</a></span>(<span class="no">file</span>,<span class="fl">0</span>,<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="no">file</span>)-<span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span>(<span class="st">"NASA.xlsx"</span>)-<span class="fl">1</span>)
+<span class="no">hseinv_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_data.html">get_data</a></span>(<span class="st">"hseinv"</span>, <span class="st">"txt"</span>, <span class="kw">file_loc</span><span class="kw">=</span><span class="no">my_wd</span>)
+
+<span class="co">#Using the function to make a new data set that is time series</span>
+<span class="no">TS_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/make_ts.html">make_ts</a></span>(<span class="st">"year"</span>, <span class="no">hseinv_data</span>)
+
+<span class="co">#Using the function to override the old data with time series data</span>
+<span class="co">#Note that this is strongly discouraged, see below.</span>
+<span class="no">hseinv_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/make_ts.html">make_ts</a></span>(<span class="st">"year"</span>, <span class="no">hseinv_data</span>)</pre></body></html></div>
+<p>The user can then use the dynlm function to add lagged variables to their model.</p>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dynlm</span>)
+<span class="co">#&gt; Loading required package: zoo</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'zoo'</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     as.Date, as.Date.numeric</span>
+<span class="no">lagged_model</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dynlm/man/dynlm.html">dynlm</a></span>(<span class="no">lpop</span> ~ <span class="no">price</span> + <span class="fu">L</span>(<span class="no">linvpc</span>,<span class="fl">0</span>:<span class="fl">2</span>), <span class="kw">data</span><span class="kw">=</span><span class="no">TS_data</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span>(<span class="no">lagged_model</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Time series regression with "zoo" data:</span>
+<span class="co">#&gt; Start = Jan 1949, End = Jan 1988</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Call:</span>
+<span class="co">#&gt; dynlm(formula = lpop ~ price + L(linvpc, 0:2), data = TS_data)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residuals:</span>
+<span class="co">#&gt;      Min       1Q   Median       3Q      Max </span>
+<span class="co">#&gt; -0.22169 -0.07194  0.02768  0.05565  0.11692 </span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Coefficients:</span>
+<span class="co">#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)    </span>
+<span class="co">#&gt; (Intercept)      10.9222     0.3271  33.389  &lt; 2e-16 ***</span>
+<span class="co">#&gt; price             1.6264     0.2927   5.557 2.97e-06 ***</span>
+<span class="co">#&gt; L(linvpc, 0:2)0   0.2612     0.1123   2.326   0.0259 *  </span>
+<span class="co">#&gt; L(linvpc, 0:2)1  -0.1121     0.1384  -0.810   0.4234    </span>
+<span class="co">#&gt; L(linvpc, 0:2)2   0.1769     0.1174   1.508   0.1407    </span>
+<span class="co">#&gt; ---</span>
+<span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Residual standard error: 0.086 on 35 degrees of freedom</span>
+<span class="co">#&gt; Multiple R-squared:  0.6974, Adjusted R-squared:  0.6629 </span>
+<span class="co">#&gt; F-statistic: 20.17 on 4 and 35 DF,  p-value: 1.084e-08</span></pre></body></html></div>
+<p>When users convert to time series data, the ADF and chow test functions automatically convert this to numeric form in order to proceed. If users do, for whatever reason, want to convert back from time series (to numeric class), a function has been created to allow for this:</p>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="../reference/make_numeric.html">make_numeric</a></span>(<span class="no">TS_data</span>, <span class="st">"year"</span>)</pre></body></html></div>
+<p>However, this is discouraged because the initial data types are lost in the process of converting from time series and back to numeric. Therefore, users are encouraged to not override the initial dataset but instead use time series function to make a new time series data frame, also keeping the initial one.</p>
+</div>
+<div id="adf-test" class="section level2">
+<h2 class="hasAnchor">
+<a href="#adf-test" class="anchor"></a>ADF test</h2>
+<p>An ADF can ordinarily be run without Kenometrics. However, students often find the results confusing and difficult to understand. Kenometrics selects an appropriate test (defaulting to “constant, no trend”) for students automatically, yet leaving the option for users to select their own. Additionally, if the variable is found to be non-stationary, the function calculates the 1st difference and returns the original dataset with a the 1st difference appended. This allows students to then run regressions knowing that all variables are stationary.</p>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="co">#overrides the previous dataset</span>
+<span class="co">#If the variable is stationary then no change is made</span>
+<span class="co">#If the variable is non-stationary then the 1st difference is appended</span>
+<span class="co">#We converted the data to time series, above, so we must add a time variable:</span>
+<span class="no">hseinv_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/ADF.html">ADF</a></span>(<span class="st">"lpop"</span>, <span class="no">hseinv_data</span>, <span class="kw">type</span><span class="kw">=</span><span class="st">"type1"</span>, <span class="kw">time_var</span> <span class="kw">=</span> <span class="st">"year"</span>)
+<span class="co">#&gt; c("year", "inv", "pop", "price", "linv", "lpop", "lprice", "t", </span>
+<span class="co">#&gt; "invpc", "linvpc", "lprice_1", "linvpc_1", "gprice", "ginvpc"</span>
+<span class="co">#&gt; )</span>
+<span class="co">#&gt; Augmented Dickey-Fuller Test </span>
+<span class="co">#&gt; alternative: stationary </span>
+<span class="co">#&gt;  </span>
+<span class="co">#&gt; Type 1: no drift no trend </span>
+<span class="co">#&gt;      lag    ADF p.value</span>
+<span class="co">#&gt; [1,]   0 23.499   0.990</span>
+<span class="co">#&gt; [2,]   1  0.955   0.905</span>
+<span class="co">#&gt; [3,]   2  0.384   0.748</span>
+<span class="co">#&gt; [4,]   3  0.351   0.739</span>
+<span class="co">#&gt; Type 2: with drift no trend </span>
+<span class="co">#&gt;      lag    ADF p.value</span>
+<span class="co">#&gt; [1,]   0 -12.64  0.0100</span>
+<span class="co">#&gt; [2,]   1  -2.64  0.0963</span>
+<span class="co">#&gt; [3,]   2  -1.66  0.4580</span>
+<span class="co">#&gt; [4,]   3  -1.80  0.4032</span>
+<span class="co">#&gt; Type 3: with drift and trend </span>
+<span class="co">#&gt;      lag   ADF p.value</span>
+<span class="co">#&gt; [1,]   0 -1.98   0.570</span>
+<span class="co">#&gt; [2,]   1 -1.95   0.583</span>
+<span class="co">#&gt; [3,]   2 -2.66   0.308</span>
+<span class="co">#&gt; [4,]   3 -3.06   0.154</span>
+<span class="co">#&gt; ---- </span>
+<span class="co">#&gt; Note: in fact, p.value = 0.01 means p.value &lt;= 0.01 </span>
+<span class="co">#&gt; [1] "beta 1  is significant"</span>
+<span class="co">#&gt; [1] "lpop is not stationary"</span>
+<span class="co">#&gt; [1] "beta 2  is significant"</span>
+<span class="co">#&gt; [1] "beta 3  is significant"</span>
+<span class="co">#&gt; [1] "beta 4  is significant"</span>
+<span class="co">#&gt; [1] "The 1st difference has been appended to the data frame"</span></pre></body></html></div>
+</div>
+<div id="lrm" class="section level2">
+<h2 class="hasAnchor">
+<a href="#lrm" class="anchor"></a>LRM</h2>
+<p>The final function available to users is the LRM function, which calculates the Long Run Multiplier/Propensity of a FDL model. It is currently configured to only allow 3 lags of one variable, and from this the LRM is calculated. Additional functionality to enable users to specify the number of lags is expected to be released in a future update. The LRM also calculates the t-statistic of the LRM and prints this, but only returns the LRM, as shown below.</p>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="co">#Sourcing the data from the user's computer</span>
+<span class="no">file</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"fertil3.txt"</span>, <span class="kw">package</span><span class="kw">=</span><span class="st">"Kenometrics"</span>)
+<span class="no">fertil3_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.delim</a></span>(<span class="no">file</span>)
+
+<span class="co">#Using the function</span>
+<span class="no">LR_prop</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/LRM.html">LRM</a></span>(<span class="st">"gfr"</span>, <span class="st">"pe"</span>, <span class="fl">3</span>, <span class="kw">other_vars</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"ww2"</span>, <span class="st">"pill"</span>), <span class="kw">df</span><span class="kw">=</span><span class="no">fertil3_data</span>)
+<span class="co">#&gt; [1] "The LRM IS: 0.1007"</span>
+<span class="co">#&gt; [1] "The LRM standard error is: 0.0298"</span>
+<span class="co">#&gt; [1] "The t-stat of the LRM is: 3.3795"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">LR_prop</span>)
+<span class="co">#&gt; [1] 0.1007191</span></pre></body></html></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

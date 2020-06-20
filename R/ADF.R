@@ -35,7 +35,7 @@ ADF <-
     if (TS==TRUE){
       variables <- dput(names(df))
       numeric_data <- as.data.frame(as.numeric(df[[time_var]]))
-      for (k in 1:length(df)){ #here 1:
+      for (k in seq_len(length(df))){ #here 1:
         if (!variables[k]==time_var){
         numeric_data[[k]] <- as.numeric(df[[k]])
         }
@@ -48,7 +48,7 @@ ADF <-
     changed <- FALSE
     adf_data <- df[[my_var]]
     ADF <- aTSA::adf.test(adf_data)
-    for (n in 1:length(ADF[[type]][,3])){ #here 1:
+    for (n in seq_len(length(ADF[[type]][,3]))){ #here 1:
       if(ADF[[type]][,3][n]< 0.05){print(
         paste("beta",n, " is not significant"))
       }

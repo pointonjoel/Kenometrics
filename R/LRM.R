@@ -49,7 +49,7 @@ LRM <-
       new_df <- utils::tail(df,-2)
 
       others <- ""
-      for (i in 1:length(other_vars)){
+      for (i in seq_len(length(other_vars))){
         if(!other_vars[1]==""){
           others <- paste(others, other_vars[i], sep=" + ")
         }

@@ -17,7 +17,7 @@
 #'
 #' @importFrom car linearHypothesis
 #' @importFrom stats as.formula
-#' @import dynlm
+#' @importFrom dynlm dynlm
 #' @examples
 #' file = system.file("extdata", "hseinv.txt", package="Kenometrics")
 #' data <- read.delim(file)
@@ -38,7 +38,7 @@ chow <-
         vars_as_list <- names(df)
         variables <- as.vector(vars_as_list)
         numeric_data <- as.data.frame(as.numeric(df[[time_var]]))
-        for (k in 1:length(df)){#here 1:
+        for (k in seq_len(length(df))){#here 1:
           if (!variables[k]==time_var){
             numeric_data[[k]] <- as.numeric(df[[k]])
           }
@@ -52,7 +52,7 @@ chow <-
       df[["Dx"]] <- df$D * df[[time_var]]
       new_model <- stats::as.formula(paste(model, " + D + Dx", sep="" ))
       print(new_model)
-      chow_model <- dynlm(new_model, data=df)
+      chow_model <- dynlm::dynlm(new_model, data=df)
       modelSummary <- summary(chow_model)
       print(modelSummary)
       if (type=="both"){

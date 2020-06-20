@@ -132,19 +132,25 @@
     <p>Convert the entire dataset to time-series data type</p>
     </div>
 
-    <pre class="usage"><span class='fu'>make_ts</span>(<span class='no'>time_var</span>, <span class='no'>df</span>)</pre>
+    <pre class="usage"><span class='fu'>make_ts</span>(<span class='no'>time_vars</span>, <span class='no'>df</span>, <span class='kw'>vars</span> <span class='kw'>=</span> <span class='st'>"all"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>time_var</th>
+      <th>time_vars</th>
       <td><p>The variable in the dataset which marks the
-year of the observations. E.g. "year"</p></td>
+year of the observations. E.g. "year". If there are separate year and month
+variables, use a vector with the year variable first and the month variable
+second. E.g. c("year", "month")</p></td>
     </tr>
     <tr>
       <th>df</th>
       <td><p>The dataframe which needs to be made a time series data</p></td>
+    </tr>
+    <tr>
+      <th>vars</th>
+      <td><p>A vector of variable names, e.g. c("pop", "inv", )</p></td>
     </tr>
     </table>
 
