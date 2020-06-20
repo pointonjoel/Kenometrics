@@ -13,6 +13,8 @@ status](https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master)](https:
 status](https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometrics?branch=master&svg=true)](https://ci.appveyor.com/project/pointonjoel/Kenometrics)
 [![R build
 status](https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg)](https://github.com/pointonjoel/Kenometrics/actions)
+![CI](https://github.com/pointonjoel/Kenometrics/workflows/CI/badge.svg)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DXBJF8MEJ3GT2&source=url)
 <!-- badges: end -->
 
 The goal of Kenometrics is to provide a set of functions which allow
