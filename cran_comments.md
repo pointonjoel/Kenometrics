@@ -3,10 +3,11 @@ cran-comments.md
 Joel Pointon (20/06/2020)
 
 ## Test environments
-
   - local Windows 10 install, R 3.6.3
-  - appveyor: x86_64-w64-mingw32/x64 (build 17763), R 4.0.1
-  -
+  - Travis: Ubuntu 16.04.6 LTS R 4.0.0
+  - Travis: macOS High Sierra 10.13.6, R 4.0.1
+  - appveyor: Windows Server x64 (build 17763) x86_64-w64-mingw32/x64, R 4.0.1
+  
 
 ## R CMD check results
 

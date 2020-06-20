@@ -40,7 +40,7 @@ devtools::install_github("pointonjoel/Kenometrics")
 ```
 ## Overview
 
-The Kenometrics package enables lecturers and students to teach and implement fundemental econometric techniques. Below is a summary of the functions on offer and how they can be used:
+The Kenometrics package enables lecturers and students to teach and implement fundemental econometric techniques. This project has taken many hours; if you find the package useful then please consider donating using the donation bage (linked to PayPal) above. Below is a summary of the functions on offer and how they can be used:
 <body>
   <ul>
     <li>
