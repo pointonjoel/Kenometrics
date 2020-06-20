@@ -4,14 +4,14 @@
 \alias{get_data}
 \title{Importing Data}
 \usage{
-get_data(name, type = "excel", delim = "", header = TRUE, file_loc, key, ...)
+get_data(name, type = "excel", delim = "", header = TRUE, file_loc, ...)
 }
 \arguments{
 \item{name}{The filename of the dataset to be used, e.g. "hseinv"
 or "NASA", without the extension (i.e. "NASA", not "NASA.xlsx").
 If using FRED, type the series id.}
 
-\item{type}{The type of data, i.e "Wooldridge", "excel" or "FRED".}
+\item{type}{The type of data, i.e "txt" or "excel".}
 
 \item{delim}{The delimiter used for txt files, with whitespace/
 tab delimiter being the default.}
@@ -21,10 +21,7 @@ tab delimiter being the default.}
 \item{file_loc}{The working directory for the file, if appropriate.
 Note the use of "/" rather than "\", as is customary in R.}
 
-\item{key}{The user's personal key used to access FRED's API}
-
-\item{...}{The additional parameters either for sourcing FRED data
-(start/end observations) or txt/csv files.}
+\item{...}{The additional parameters for sourcing txt/csv files.}
 }
 \value{
 The dataset as a dataframe
@@ -42,11 +39,4 @@ my_wd =substr(file,0,nchar(file)-nchar("NASA.xlsx")-1)
 NASA_data <- get_data("NASA", type="excel", file_loc = my_wd)
 
 some_data <- get_data("hseinv", "txt", file_loc=my_wd)
-
-\dontrun{
-FRED requests can also be made; simply replace the key ("ABCDE")
-with your personal access token - see Kenometrics_Support file
-for details
-my_data <- get_data(name="CLVMNACSCAB1GQUK", type="FRED", key="ABCDE")
-}
 }

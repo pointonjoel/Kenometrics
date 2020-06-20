@@ -42,7 +42,7 @@ The Kenometrics package enables lecturers and students to teach and implement fu
   <ul>
     <li>
       <b>get\_data()</b> 
-      <i>A single function to find and source data from a variety of sources (FRED, txt, Excel)</i></li>
+      <i>A single function to find and source data from a variety of sources (txt, Excel)</i></li>
     <li>
       <b>ttest()</b> 
       <i>Conduct a t-test (with a specific hypothesised mean, not necessarily 0)</i></li>
@@ -64,10 +64,10 @@ The Kenometrics package enables lecturers and students to teach and implement fu
   </ul>
 </body>
 
-The Kenometrics package takes many existing packages and incorporates them as dependencies, simplifying the existing functions they provide. Dependencies include, but are not limited to: wooldridge, zoo, dynlm, fredr, readxl and tseries. Having all of these bundled into one package and harnessed for econometrics means that students can quickly begin putting theory into practice. Without Kenometrics, testing for non-stationary data, for example, can be long-winded and and require multiple packages. However, Kenometrics similifies the code into one line and includes all other necessary packages. Although, students are encouraged to look into the code, which is written in a simple and intuitive way, to see how they could complete the data manipulations without Kenometrics.
+The Kenometrics package takes many existing packages and incorporates them as dependencies, simplifying the existing functions they provide. Dependencies include, but are not limited to: wooldridge, zoo, dynlm, readxl and tseries. Having all of these bundled into one package and harnessed for econometrics means that students can quickly begin putting theory into practice. Without Kenometrics, testing for non-stationary data, for example, can be long-winded and and require multiple packages. However, Kenometrics similifies the code into one line and includes all other necessary packages. Although, students are encouraged to look into the code, which is written in a simple and intuitive way, to see how they could complete the data manipulations without Kenometrics.
 
 ## Importing data
-When importing data, students may often be overwhelmed with the specifics needed when importing from a variety of sources. The having one function complete with FRED and Excel integration simplies things further. 
+When importing data, students may often be overwhelmed with the specifics needed when importing from a variety of sources. Having one function with txt and Excel integration simplies things further. 
 
 To import data to the current environment, there are two ways depending on the type of data. It is reccomended that users also import the [wooldridge package](https://cran.r-project.org/web/packages/wooldridge/index.html), which contains all of the [datasets used in the textbook's examples](https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781111531041):
 
@@ -100,12 +100,6 @@ my_wd="C:/Documents"
 ```
 
 Note the use of "/" rather than "\", as is customary in R.
-
-Students can also import files from FRED using Kenometrics, once they have obtained a [FRED API key](https://research.stlouisfed.org/docs/api/api_key.html), which is simple and free. For examples, see:
-
-```{r help, results = FALSE}
-#?get_data
-```
 
 ## T-tests
 

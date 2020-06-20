@@ -16,7 +16,6 @@ Imports:
     zoo,
     car,
     dynlm,
-    fredr (<= 1.7),
     readxl,
     stats,
     aTSA,

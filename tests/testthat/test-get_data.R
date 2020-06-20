@@ -32,13 +32,3 @@ test_that("Sourcing excel data", {
   )
 })
 
-test_that("Sourcing FRED data", {
-  FRED_data <-
-    get_data(name="CLVMNACSCAB1GQUK", type="FRED",
-             key="864c07d6903d4ac4929bba42b1829355"
-             )
-  GDP <- FRED_data$value[1]
-  expect_equal(GDP, "180405.0"
-  )
-})
-
