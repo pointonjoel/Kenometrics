@@ -41,16 +41,19 @@ The Kenometrics package enables lecturers and students to teach and implement fu
   <ul>
     <li>
       <b>get\_data()</b> 
-      <i>A single function to find and source data from a variety of sources (Wooldridge, FRED, txt, Excel)</i></li>
+      <i>A single function to find and source data from a variety of sources (FRED, txt, Excel)</i></li>
     <li>
       <b>ttest()</b> 
       <i>Conduct a t-test (with a specific hypothesised mean, not necessarily 0)</i></li>
     <li>
+      <b>chow()</b>
+      <i>Conduct a chow test (it adds an intercept and dummy slope and tests the significance depending on if one is testing for a break in the intercept, slope or both)</i></li>
+    <li>
       <b>make\_ts()</b>
       <i>Make the data time-series (to allow for lagged variables etc.)</i></li>
     <li>
-      <b>chow()</b>
-      <i>Conduct a chow test (it adds an intercept and dummy slope and tests the significance depending on if one is testing for a break in the intercept, slope or both)</i></li>
+      <b>make\_numeric()</b>
+      <i>Make the data of numeric form, to allow to conversion from zoo to numeric (reversing the make_ts function).</i></li>
     <li>
       <b>ADF()</b>
       <i>Conduct an ADF test (and if the data are non stationary, it adds the first-difference to the data frame)</i></li>
@@ -152,7 +155,7 @@ summary(lagged_model)
 
 When users convert to time series data, the ADF and chow test functions automatically convert this to numeric form in order to proceed. If users do, for whatever reason, want to convert back from time series (to numeric class), a function has been created to allow for this:
 
-```{r}
+```{r results=FALSE}
 make_numeric(TS_data, "year")
 ```
 
@@ -168,6 +171,20 @@ An ADF can ordinarily be run without Kenometrics. However, students often find t
 #If the variable is non-stationary then the 1st difference is appended
 #We converted the data to time series, above, so we must add a time variable:
 hseinv_data <- ADF("lpop", hseinv_data, type="type1", time_var = "year")
+```
+
+## LRM
+
+The final function available to users is the LRM function, which calculates the Long Run Multiplier/Propensity of a FDL model. It is currently configured to only allow 3 lags of one variable, and from this the LRM is calculated. Additional functionality to enable users to specify the number of lags is expected to be released in a future update. The LRM also calculates the t-statistic of the LRM and prints this, but only returns the LRM, as shown below.
+
+```{r}
+#Sourcing the data from the user's computer
+file <- system.file("extdata", "fertil3.txt", package="Kenometrics")
+fertil3_data <- read.delim(file)
+
+#Using the function
+LR_prop <- LRM("gfr", "pe", 3, other_vars=c("ww2", "pill"), df=fertil3_data)
+print(LR_prop)
 ```
 
 
