@@ -6,6 +6,8 @@ Joel Pointon
 ## Test environments
 
   - local Windows 10 install, R 3.6.3
+  - appveyor: x86_64-w64-mingw32/x64 (build 17763), R 4.0.1
+  -
 
 ## R CMD check results
 
