@@ -11,6 +11,8 @@ coverage](https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badg
 status](https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master)](https://travis-ci.com/pointonjoel/Kenometrics)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometrics?branch=master&svg=true)](https://ci.appveyor.com/project/pointonjoel/Kenometrics)
+[![R build
+status](https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg)](https://github.com/pointonjoel/Kenometrics/actions)
 <!-- badges: end -->
 
 The goal of Kenometrics is to provide a set of functions which allow
@@ -29,8 +31,8 @@ install.packages("Kenometrics")
 To install the latest development version from GitHub:
 
 ``` r
-install.packages("remotes")
-remotes::install_github("pointonjoel/Kenometrics")
+install.packages("devtools")
+devtools::install_github("pointonjoel/Kenometrics")
 ```
 
 ## Overview
@@ -108,5 +110,3 @@ However, Kenometrics similifies the code into one line and includes all
 other necessary packages. Although, students are encouraged to look into
 the code, which is written in a simple and intuitive way, to see how
 they could complete the data manipulations without Kenometrics.
-
-\#Check gp() and all\_checks() - fix everything \#Finish website

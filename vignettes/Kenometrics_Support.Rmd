@@ -25,13 +25,6 @@ When importing data, students may often be overwhelmed with the specifics needed
 
 To import data to the current environment, there are two ways depending on the type of data. It is reccomended that users also import the [wooldridge package](https://cran.r-project.org/web/packages/wooldridge/index.html), which contains all of the [datasets used in the textbook's examples](https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781111531041):
 
-```{r hseinv}
-library(wooldridge)
-data(hseinv)
-#Then the dataset can be previewed (and manipulated)
-head(hseinv)
-```
-
 Kenometrics provides support for a variety of other types of datasets. Simply specify the name of the file/dataset and the type of data.
 
 ```{r nasa}
@@ -47,7 +40,7 @@ print(NASA_data)
 Whilst the function defaults the working directory to the current location of the workspace, students are encouraged to set a working directory prior to sourcing data. This can be done by using:
 
 ```{r setwd}
-my_wd="C:/Documents"
+#my_wd="C:/Documents"
 #And then for usage:
 #setwd(my_wd)
 ```
@@ -59,7 +52,8 @@ Note the use of "/" rather than "\", as is customary in R.
 Once data has been imported, a t-test can then be conducted. Ordinarily, this is possible through the completing a linear regression and finding the summary of it.
 
 ```{r}
-simple_model <- lm(lprice ~ lpop + linvpc , data=hseinv)
+hseinv_data <- get_data("hseinv", type="txt", file_loc = my_wd)
+simple_model <- lm(lprice ~ lpop + linvpc , data=hseinv_data)
 summary(simple_model)
 ```
 
@@ -74,7 +68,7 @@ However, this assumes that the hypothesised population mean is 0; there is no sc
 
 With Kenometrics, a Chow test can easily be conducted. The fucntion works by adding both an intercept and a slope dummy, allowing the user to select whether the test is for the intercept, slope, or both.
 ```{r chow}
-chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
+chow(1960, "year", hseinv_data, "linvpc ~ lpop", "both")
 ```
 
 ## Making data time series
