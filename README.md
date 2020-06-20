@@ -240,7 +240,7 @@ to select whether the test is for the intercept, slope, or both.
 ``` r
 chow(1960, "year", hseinv, "linvpc ~ lpop", "both")
 #> linvpc ~ lpop + D + Dx
-#> <environment: 0x00000000120272c0>
+#> <environment: 0x0000000012025b58>
 #> 
 #> Time series regression with "numeric" data:
 #> Start = 1, End = 42
