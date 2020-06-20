@@ -11,7 +11,7 @@ Joel Pointon (20/06/2020)
 ## R CMD check results
 
 -- R CMD check results ---------------------------------- Kenometrics 0.1.0 ----
-Duration: 1m 25.3s
+Duration: 1m 28.8s
 
 0 errors v | 0 warnings v | 0 notes v
 
