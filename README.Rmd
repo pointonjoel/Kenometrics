@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Codecov test coverage](https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badge.svg)](https://codecov.io/gh/pointonjoel/Kenometrics?branch=master)
+[![Travis build status](https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master)](https://travis-ci.com/pointonjoel/Kenometrics)
 <!-- badges: end -->
 
 The goal of Kenometrics is to provide a set of functions which allow econometrics students to simply conduct important manipulations and tests.
@@ -170,8 +171,6 @@ hseinv_data <- ADF("lpop", hseinv_data, type="type1", time_var = "year")
 ```
 
 
-#make LRM function, use roxygen skeleton, add to README, run unit testing.
-#Stop make_numeric being annoying and printing the variables
-#Final youtube vid
+#Check gp() and all_checks() - fix everything
 #Finish website
 

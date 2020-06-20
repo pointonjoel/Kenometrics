@@ -4,14 +4,35 @@
 \alias{LRM}
 \title{Find the LRM}
 \usage{
-LRM(time_var, df)
+LRM(yvar, xvar, lags = 3, other_vars = "", df, time_var = "year")
 }
 \arguments{
-\item{df}{}
+\item{yvar}{The regressand/dependent variable in the FDL model}
+
+\item{xvar}{The variable within the Finite Distributed Lag (FDL) model
+that will be the regressor. E.g. lpop}
+
+\item{lags}{The number of lags of the x variable}
+
+\item{other_vars}{variables to be included (not lagged). Input using a vector
+such as: c("lprice", "linvpc")}
+
+\item{df}{The dataframe which the model is based upon, e.g. my_data or NASA.}
+
+\item{time_var}{The variable in the dataset which marks the year of the
+observations. E.g. "year".}
 }
 \value{
-
+It prints the LRM its standard error and returns the LRM
 }
 \description{
 Find the long run multiplier/propensity
+}
+\examples{
+#Sourcing the data from the user's computer
+file <- system.file("extdata", "fertil3.txt", package="Kenometrics")
+fertil3_data <- read.delim(file)
+
+#Using the function
+LR_prop <- LRM("gfr", "pe", 3, other_vars=c("ww2", "pill"), df=fertil3_data)
 }

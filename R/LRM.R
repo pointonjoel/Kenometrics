@@ -5,7 +5,7 @@
 #' @param xvar The variable within the Finite Distributed Lag (FDL) model
 #' that will be the regressor. E.g. lpop
 #' @param lags The number of lags of the x variable
-#' @param Other variables to be included (not lagged). Input using a vector
+#' @param other_vars variables to be included (not lagged). Input using a vector
 #' such as: c("lprice", "linvpc")
 #' @param df The dataframe which the model is based upon, e.g. my_data or NASA.
 #' @param time_var The variable in the dataset which marks the year of the
@@ -15,8 +15,15 @@
 #' @export
 #'
 #' @importFrom Hmisc Lag
+#' @importFrom utils tail
 #'
 #' @examples
+#' #Sourcing the data from the user's computer
+#' file <- system.file("extdata", "fertil3.txt", package="Kenometrics")
+#' fertil3_data <- read.delim(file)
+#'
+#' #Using the function
+#' LR_prop <- LRM("gfr", "pe", 3, other_vars=c("ww2", "pill"), df=fertil3_data)
 LRM <-
   function (yvar, xvar, lags=3, other_vars="", df, time_var="year"){
     df <- make_ts(time_var, df)
@@ -39,7 +46,7 @@ LRM <-
       df[[var_diff2]] <- difference2
 
       #Removing the first two observations due to the the 1st/2nd differences
-      new_df <- tail(df,-2)
+      new_df <- utils::tail(df,-2)
 
       others <- ""
       for (i in 1:length(other_vars)){
@@ -49,7 +56,12 @@ LRM <-
       }
 
       #Obtaining regression formula
-      formula <- as.formula(paste(yvar, "~", xvar, "+", var_diff1, "+", var_diff2, others, sep=" "))
+      formula <-
+        as.formula(
+          paste(
+            yvar, "~", xvar, "+", var_diff1, "+", var_diff2, others, sep=" "
+            )
+          )
 
       #Regression and LRP
       model <- dynlm(formula, data=new_df)
