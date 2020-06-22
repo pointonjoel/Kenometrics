@@ -3,7 +3,7 @@
 #' in either the intercept, slope, or both.
 #'
 #' @param possible_break The year (point) in which the structural break is
-#' believed to have occured, e.g. 1969.
+#' believed to have occurred, e.g. 1969.
 #' @param time_var The variable which marks the data/time of the observations.
 #' @param df The data frame which holds the variables. e.g. cement_data
 #' @param type The type of structural break to be assessed; a break in the
@@ -60,31 +60,31 @@ chow <-
         p_value <- f_test[["Pr(>F)"]][2]
         if (p_value<0.05){
           result <-
-      "The dummies are jointly significant, so a structural break has occured"
+      "The dummies are jointly significant, so a structural break has occurred"
         }
         if (p_value>0.05){
           result <-
-  "The dummies are NOT jointly significant; a structural break has NOT occured"
+  "The dummies are NOT jointly significant; a structural break has NOT occurred"
         }
       }
       if (type=="intercept"){
         if (modelSummary[["coefficients"]]["D","Pr(>|t|)"]<0.05){
           result <-
-      "The intercept dummy is significant so a structural break has occured"
+      "The intercept dummy is significant so a structural break has occurred"
         }
         if (modelSummary[["coefficients"]]["D","Pr(>|t|)"]>0.05){
           result <-
-"The intercept dummy is NOT significant so a structural break has NOT occured"
+"The intercept dummy is NOT significant so a structural break has NOT occurred"
         }
       }
       if (type=="slope"){
         if (modelSummary[["coefficients"]]["Dx","Pr(>|t|)"]<0.05){
           result <-
-            "The slope dummy is significant so a structural break has occured"
+            "The slope dummy is significant so a structural break has occurred"
         }
         if (modelSummary[["coefficients"]]["Dx","Pr(>|t|)"]>0.05){
           result <-
-    "The slope dummy is NOT significant so a structural break has NOT occured"
+    "The slope dummy is NOT significant so a structural break has NOT occurred"
         }
       }
     }

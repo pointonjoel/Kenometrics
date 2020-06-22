@@ -10,13 +10,13 @@ ezunem_data <- get_data("ezunem", "txt", file_loc=my_wd)
 test_that("Chow test for both (intercept and slope) - no break", {
   output1 <- chow(1960, "year", hseinv_data, "linvpc ~ lpop", "both")
   expect_equal(dput(output1),
-  "The dummies are NOT jointly significant; a structural break has NOT occured"
+  "The dummies are NOT jointly significant; a structural break has NOT occurred"
   )
 })
 test_that("Chow test for both (intercept and slope) - break", {
   output1 <- chow(1985, "year", ezunem_data, "uclms ~ c1", "both")
   expect_equal(dput(output1),
-  "The dummies are jointly significant, so a structural break has occured"
+  "The dummies are jointly significant, so a structural break has occurred"
   )
 })
 
@@ -24,13 +24,13 @@ test_that("Chow test for both (intercept and slope) - break", {
 test_that("Chow test for intercept - no break", {
   output2 <- chow(1960, "year", hseinv_data, "linvpc ~ lpop", "intercept")
   expect_equal(dput(output2),
-"The intercept dummy is NOT significant so a structural break has NOT occured"
+"The intercept dummy is NOT significant so a structural break has NOT occurred"
   )
 })
 test_that("Chow test for intercept - break", {
   output2 <- chow(1983, "year", ezunem_data, "uclms ~ c1", "intercept")
   expect_equal(dput(output2),
-  "The intercept dummy is significant so a structural break has occured"
+  "The intercept dummy is significant so a structural break has occurred"
   )
 })
 
@@ -38,14 +38,14 @@ test_that("Chow test for intercept - break", {
 test_that("Chow test for slope - no break", {
   output3 <- chow(1960, "year", hseinv_data, "linvpc ~ lpop", "slope")
   expect_equal(dput(output3),
-  "The slope dummy is NOT significant so a structural break has NOT occured"
+  "The slope dummy is NOT significant so a structural break has NOT occurred"
   )
 })
 test_that("Chow test for slope - break", {
   output4 <-
     chow(1960, "year", cement_data, "ipcem ~ milemp + prcpet", "slope")
   expect_equal(dput(output4),
-  "The slope dummy is significant so a structural break has occured"
+  "The slope dummy is significant so a structural break has occurred"
   )
 })
 
@@ -62,6 +62,6 @@ test_that("Chow test for both - no break - WITH TS DATA", {
   TS_data <- make_ts("year", hseinv_data)
   output1 <- chow(1960, "year", TS_data, "linvpc ~ lpop", "both")
   expect_equal(dput(output1),
- "The dummies are NOT jointly significant; a structural break has NOT occured"
+ "The dummies are NOT jointly significant; a structural break has NOT occurred"
   )
 })

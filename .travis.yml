@@ -9,3 +9,7 @@ os:
   - osx
 
 dist: xenial
+
+r:
+  - release
+  - devel

@@ -14,6 +14,7 @@ status](https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometri
 [![R build
 status](https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg)](https://github.com/pointonjoel/Kenometrics/actions)
 ![CI](https://github.com/pointonjoel/Kenometrics/workflows/CI/badge.svg)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DXBJF8MEJ3GT2&source=url)
 <!-- badges: end -->
 
 The goal of Kenometrics is to provide a set of functions which allow
@@ -23,15 +24,17 @@ tests.
 ## Installation
 
 You can install the released version of Kenometrics by contacting [Joel
-Pointon](www.joelpointon.com/contact).
+Pointon](https:/www.joelpointon.com/contact).
 
 ## Overview
 
 The Kenometrics package enables lecturers and students to teach and
-implement fundemental econometric techniques. This project has taken
+implement fundamental econometric techniques. This project has taken
 many hours; if you find the package useful then please consider donating
-using the donation bage (linked to PayPal) above. Below is a summary of
-the functions on offer and how they can be used:
+using the donation badge (linked to PayPal) above. Additionally, if you
+have a feature you would like to see added then please get in touch (and
+consider donating\!). Below is a summary of the functions on offer and
+how they can be used:
 
 <body>
 
@@ -69,7 +72,7 @@ variables etc.)</i>
 <li>
 
 <b>make\_numeric()</b> <i>Make the data of numeric form, to allow to
-conversion from zoo to numeric (reversing the make\_ts function).</i>
+conversion from zoo to numeric (reversing the make\_ts function)</i>
 
 </li>
 
@@ -98,7 +101,20 @@ readxl and tseries. Having all of these bundled into one package and
 harnessed for econometrics means that students can quickly begin putting
 theory into practice. Without Kenometrics, testing for non-stationary
 data, for example, can be long-winded and and require multiple packages.
-However, Kenometrics similifies the code into one line and includes all
+However, Kenometrics simplifies the code into one line and includes all
 other necessary packages. Although, students are encouraged to look into
 the code, which is written in a simple and intuitive way, to see how
 they could complete the data manipulations without Kenometrics.
+
+<center>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+
+<input type="hidden" name="cmd" value="_s-xclick" />
+<input type="hidden" name="hosted_button_id" value="KRYRDEYU4TDZS" />
+<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+<img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
+
+</form>
+
+</center>

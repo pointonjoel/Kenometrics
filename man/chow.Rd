@@ -8,7 +8,7 @@ chow(possible_break, time_var = "year", df, model, type)
 }
 \arguments{
 \item{possible_break}{The year (point) in which the structural break is
-believed to have occured, e.g. 1969.}
+believed to have occurred, e.g. 1969.}
 
 \item{time_var}{The variable which marks the data/time of the observations.}
 

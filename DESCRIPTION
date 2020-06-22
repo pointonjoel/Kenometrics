@@ -2,6 +2,7 @@ Package: Kenometrics
 Type: Package
 Title: Support Tools For Econometrics Classes
 Version: 0.1.0
+Date: 22/06/2020
 Authors@R: person("Joel", "Pointon", email = "pointon.joel@gmail.com",
   role = c("aut", "cre"))
 Maintainer: Joel Pointon <pointon.joel@gmail.com>
@@ -10,6 +11,7 @@ Description: A set of functions which allow econometrics students to simply
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Language: en-GB
 RoxygenNote: 7.1.0
 URL: https://github.com/pointonjoel/Kenometrics
 BugReports: https://github.com/pointonjoel/Kenometrics/issues
