@@ -27,12 +27,20 @@ knitr::opts_chunk$set(
 The goal of Kenometrics is to provide a set of functions which allow econometrics students to simply conduct important manipulations and tests.
 
 ## Installation
-
-You can install the released version of Kenometrics by contacting [Joel Pointon](https:/www.joelpointon.com/contact). 
+You can install the released version of Kenometrics from
+[CRAN](https://CRAN.R-project.org) with:
+``` r
+install.packages("Kenometrics")
+```
+To install the latest development version from GitHub:
+``` r
+install.packages("devtools")
+devtools::install_github("pointonjoel/Kenometrics")
+```
 
 ## Overview
 
-The Kenometrics package enables lecturers and students to teach and implement fundamental econometric techniques. This project has taken many hours; if you find the package useful then please consider donating using the donation badge (linked to PayPal) above. Additionally, if you have a feature you would like to see added then please get in touch (and consider donating!). Below is a summary of the functions on offer and how they can be used:
+The Kenometrics package enables lecturers and students to teach and implement fundamental econometric techniques. This project has taken many hours; if you find the package useful then please consider donating using the donation badge (linked to PayPal) above. Additionally, if you have a feature you would like to see added then please get in touch with [Joel Pointon](https:/www.joelpointon.com/contact) (and consider donating!). Below is a summary of the functions on offer and how they can be used:
 <body>
   <ul>
     <li>
