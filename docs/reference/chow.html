@@ -142,7 +142,7 @@ in either the intercept, slope, or both.</p>
     <tr>
       <th>possible_break</th>
       <td><p>The year (point) in which the structural break is
-believed to have occured, e.g. 1969.</p></td>
+believed to have occurred, e.g. 1969.</p></td>
     </tr>
     <tr>
       <th>time_var</th>
@@ -173,7 +173,7 @@ chow test.</p>
     <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"hseinv.txt"</span>, <span class='kw'>package</span><span class='kw'>=</span><span class='st'>"Kenometrics"</span>)
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.delim</a></span>(<span class='no'>file</span>)
 <span class='fu'>chow</span>(<span class='fl'>1960</span>, <span class='st'>"year"</span>, <span class='no'>data</span>, <span class='st'>"linvpc ~ lpop"</span>, <span class='st'>"both"</span>)</div><div class='output co'>#&gt; linvpc ~ lpop + D + Dx
-#&gt; &lt;environment: 0x00000000283f7c30&gt;
+#&gt; &lt;environment: 0x0000000026e4b818&gt;
 #&gt; 
 #&gt; Time series regression with "numeric" data:
 #&gt; Start = 1, End = 42
@@ -196,7 +196,7 @@ chow test.</p>
 #&gt; Multiple R-squared:  0.339,	Adjusted R-squared:  0.2868 
 #&gt; F-statistic: 6.495 on 3 and 38 DF,  p-value: 0.001173
 #&gt; 
-#&gt; [1] "The dummies are NOT jointly significant; a structural break has NOT occured"</div><div class='input'>#chow(1960, "Time", my_data, "lpop ~ price, L(linvpc,0:2) + p", "intercept")
+#&gt; [1] "The dummies are NOT jointly significant; a structural break has NOT occurred"</div><div class='input'>#chow(1960, "Time", my_data, "lpop ~ price, L(linvpc,0:2) + p", "intercept")
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

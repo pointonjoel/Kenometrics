@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support Tools For Econometrics Classes • Kenometrics</title>
+<title>Support Tools for Econometrics Classes • Kenometrics</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Support Tools For Econometrics Classes">
+<script src="pkgdown.js"></script><meta property="og:title" content="Support Tools for Econometrics Classes">
 <meta property="og:description" content="A set of functions which allow econometrics students to simply 
     conduct important manipulations and tests, with no-nonsense errors.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -91,12 +91,16 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of Kenometrics by contacting <a href="www.joelpointon.com/contact">Joel Pointon</a>.</p>
+<p>You can install the released version of Kenometrics from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"Kenometrics"</span>)</pre></div>
+<p>To install the latest development version from GitHub:</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
+<span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"pointonjoel/Kenometrics"</span>)</pre></div>
 </div>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>The Kenometrics package enables lecturers and students to teach and implement fundemental econometric techniques. This project has taken many hours; if you find the package useful then please consider donating using the donation bage (linked to PayPal) above. Below is a summary of the functions on offer and how they can be used:</p>
+<p>The Kenometrics package enables lecturers and students to teach and implement fundamental econometric techniques. This project has taken many hours; if you find the package useful then please consider donating using the donation badge (linked to PayPal) above. Additionally, if you have a feature you would like to see added then please get in touch with <a href="https:/www.joelpointon.com/contact">Joel Pointon</a> (and consider donating!). Below is a summary of the functions on offer and how they can be used:</p>
 
 <ul>
 <li>
@@ -112,7 +116,7 @@
 <p><b>make_ts()</b> <i>Make the data time-series (to allow for lagged variables etc.)</i></p>
 </li>
 <li>
-<p><b>make_numeric()</b> <i>Make the data of numeric form, to allow to conversion from zoo to numeric (reversing the make_ts function).</i></p>
+<p><b>make_numeric()</b> <i>Make the data of numeric form, to allow to conversion from zoo to numeric (reversing the make_ts function)</i></p>
 </li>
 <li>
 <p><b>ADF()</b> <i>Conduct an ADF test (and if the data are non stationary, it adds the first-difference to the data frame)</i></p>
@@ -121,7 +125,12 @@
 <p><b>LRM()</b> <i>Find and test the significance of the long run multiplier</i></p>
 </li>
 </ul>
-<p>The Kenometrics package takes many existing packages and incorporates them as dependencies, simplifying the existing functions they provide. Dependencies include, but are not limited to: wooldridge, zoo, dynlm, readxl and tseries. Having all of these bundled into one package and harnessed for econometrics means that students can quickly begin putting theory into practice. Without Kenometrics, testing for non-stationary data, for example, can be long-winded and and require multiple packages. However, Kenometrics similifies the code into one line and includes all other necessary packages. Although, students are encouraged to look into the code, which is written in a simple and intuitive way, to see how they could complete the data manipulations without Kenometrics.</p>
+<p>The Kenometrics package takes many existing packages and incorporates them as dependencies, simplifying the existing functions they provide. Dependencies include, but are not limited to: wooldridge, zoo, dynlm, readxl and tseries. Having all of these bundled into one package and harnessed for econometrics means that students can quickly begin putting theory into practice. Without Kenometrics, testing for non-stationary data, for example, can be long-winded and and require multiple packages. However, Kenometrics simplifies the code into one line and includes all other necessary packages. Although, students are encouraged to look into the code, which is written in a simple and intuitive way, to see how they could complete the data manipulations without Kenometrics.</p>
+<center>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<p><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="KRYRDEYU4TDZS"><input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"><img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1"></p>
+</form>
+</center>
 </div>
 </div>
   </div>
@@ -156,6 +165,7 @@
 <li><a href="https://travis-ci.com/pointonjoel/Kenometrics"><img src="https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/pointonjoel/Kenometrics"><img src="https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometrics?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://github.com/pointonjoel/Kenometrics/actions"><img src="https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=DXBJF8MEJ3GT2&amp;source=url"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate"></a></li>
 </ul>
 </div>
 </div>

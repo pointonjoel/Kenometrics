@@ -1,8 +1,8 @@
 Package: Kenometrics
 Type: Package
-Title: Support Tools For Econometrics Classes
+Title: Support Tools for Econometrics Classes
 Version: 0.1.0
-Date: 22/06/2020
+Date: 2020-06-22
 Authors@R: person("Joel", "Pointon", email = "pointon.joel@gmail.com",
   role = c("aut", "cre"))
 Maintainer: Joel Pointon <pointon.joel@gmail.com>
