@@ -85,7 +85,7 @@
       <h1 data-toc-skip>Kenometrics Support</h1>
                         <h4 class="author">Joel Pointon</h4>
             
-            <h4 class="date">2020-06-22</h4>
+            <h4 class="date">2020-06-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/pointonjoel/Kenometrics/blob/master/vignettes/Kenometrics_Support.Rmd"><code>vignettes/Kenometrics_Support.Rmd</code></a></small>
       <div class="hidden name"><code>Kenometrics_Support.Rmd</code></div>
@@ -94,14 +94,12 @@
 
     
     
-<!-- badges: start -->
-<p><a href="https://codecov.io/gh/pointonjoel/Kenometrics?branch=master"><img src="https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badge.svg" alt="Codecov test coverage"></a> <a href="https://travis-ci.com/pointonjoel/Kenometrics"><img src="https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master" alt="Travis build status"></a> <a href="https://ci.appveyor.com/project/pointonjoel/Kenometrics"><img src="https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometrics?branch=master&amp;svg=true" alt="AppVeyor build status"></a> <a href="https://github.com/pointonjoel/Kenometrics/actions"><img src="https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <img src="https://github.com/pointonjoel/Kenometrics/workflows/CI/badge.svg" alt="CI"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=DXBJF8MEJ3GT2&amp;source=url"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate"></a> <!-- badges: end --></p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">Kenometrics</span>)</pre></body></html></div>
 <div id="importing-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#importing-data" class="anchor"></a>Importing data</h2>
 <p>When importing data, students may often be overwhelmed with the specifics needed when importing from a variety of sources. Having one function with txt and Excel integration simplifies things further.</p>
-<p>To import data to the current environment, there are two ways depending on the type of data. It is recommended that users also import the <a href="https://cran.r-project.org/web/packages/wooldridge/index.html">wooldridge package</a>, which contains all of the <a href="https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9781111531041">datasets used in the textbook’s examples</a>.</p>
+<p>To import data to the current environment, there are two ways depending on the type of data. It is recommended that users also import the <a href="https://cran.r-project.org/package=wooldridge">wooldridge package</a>, which contains all of the <a href="https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9781111531041">datasets used in the textbook’s examples</a>.</p>
 <p>Kenometrics provides support for a variety of other types of datasets. Simply specify the name of the file/dataset and the type of data.</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co">#Code needed to obtain the NASA file on the user's computer</span>
 <span class="no">file</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"NASA.xlsx"</span>, <span class="kw">package</span><span class="kw">=</span><span class="st">"Kenometrics"</span>)
@@ -166,7 +164,7 @@
 <p>With Kenometrics, a Chow test can easily be conducted. The function works by adding both an intercept and a slope dummy, allowing the user to select whether the test is for the intercept, slope, or both.</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/chow.html">chow</a></span>(<span class="fl">1960</span>, <span class="st">"year"</span>, <span class="no">hseinv_data</span>, <span class="st">"linvpc ~ lpop"</span>, <span class="st">"both"</span>)
 <span class="co">#&gt; linvpc ~ lpop + D + Dx</span>
-<span class="co">#&gt; &lt;environment: 0x00000000149c69e8&gt;</span>
+<span class="co">#&gt; &lt;environment: 0x00000000173a7118&gt;</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Time series regression with "numeric" data:</span>
 <span class="co">#&gt; Start = 1, End = 42</span>
@@ -301,11 +299,6 @@
 <span class="co">#&gt; [1] "The t-stat of the LRM is: 3.3795"</span>
 <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="no">LR_prop</span>)
 <span class="co">#&gt; [1] 0.1007191</span></pre></body></html></div>
-<center>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="KRYRDEYU4TDZS"><input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button"><img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-</form>
-</center>
 </div>
   </div>
 

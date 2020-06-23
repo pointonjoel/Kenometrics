@@ -15,14 +15,7 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-<!-- badges: start -->
-[![Codecov test coverage](https://codecov.io/gh/pointonjoel/Kenometrics/branch/master/graph/badge.svg)](https://codecov.io/gh/pointonjoel/Kenometrics?branch=master)
-[![Travis build status](https://travis-ci.com/pointonjoel/Kenometrics.svg?branch=master)](https://travis-ci.com/pointonjoel/Kenometrics)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/pointonjoel/Kenometrics?branch=master&svg=true)](https://ci.appveyor.com/project/pointonjoel/Kenometrics)
-[![R build status](https://github.com/pointonjoel/Kenometrics/workflows/R-CMD-check/badge.svg)](https://github.com/pointonjoel/Kenometrics/actions)
-![CI](https://github.com/pointonjoel/Kenometrics/workflows/CI/badge.svg)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DXBJF8MEJ3GT2&source=url)
-<!-- badges: end -->
+
 ```{r setup}
 library(Kenometrics)
 ```
@@ -30,7 +23,7 @@ library(Kenometrics)
 ## Importing data
 When importing data, students may often be overwhelmed with the specifics needed when importing from a variety of sources. Having one function with txt and Excel integration simplifies things further. 
 
-To import data to the current environment, there are two ways depending on the type of data. It is recommended that users also import the [wooldridge package](https://cran.r-project.org/web/packages/wooldridge/index.html), which contains all of the [datasets used in the textbook's examples](https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781111531041).
+To import data to the current environment, there are two ways depending on the type of data. It is recommended that users also import the [wooldridge package](https://cran.r-project.org/package=wooldridge), which contains all of the [datasets used in the textbook's examples](https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781111531041).
 
 Kenometrics provides support for a variety of other types of datasets. Simply specify the name of the file/dataset and the type of data.
 
@@ -135,13 +128,3 @@ fertil3_data <- read.delim(file)
 LR_prop <- LRM("gfr", "pe", 3, other_vars=c("ww2", "pill"), df=fertil3_data)
 print(LR_prop)
 ```
-
-<center>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick" />
-<input type="hidden" name="hosted_button_id" value="KRYRDEYU4TDZS" />
-<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-<img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
-</form>
-</center>
-

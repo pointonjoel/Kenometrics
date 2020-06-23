@@ -27,7 +27,7 @@ Imports:
     Hmisc,
     stringr
 Suggests:
-    knitr (>= 1.7),
+    knitr,
     testthat,
     covr,
     rmarkdown
