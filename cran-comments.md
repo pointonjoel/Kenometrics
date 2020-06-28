@@ -1,6 +1,6 @@
 cran-comments.md
 ================
-Joel Pointon (20/06/2020)
+Joel Pointon (28/06/2020)
 
 ## Test environments
   - Local: Windows 10 install, R 3.6.3
@@ -14,6 +14,12 @@ Joel Pointon (20/06/2020)
 -- R CMD check results ---------------------------------- Kenometrics 0.1.0 ----
 Duration: 1m 28.8s
 
-0 errors v | 0 warnings v | 0 notes v
+0 errors v | 0 warnings v | 1 note v
 
 R CMD check succeeded
+
+Note - Econometrics is a branch of economics, so it is correctly spelled throughout.
+
+* This is a new release.
+
+
